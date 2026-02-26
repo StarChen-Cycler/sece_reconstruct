@@ -51,6 +51,7 @@ dev = [
 ]
 gpu = [
     "torch >= 2.0",
+    "torch-dct >= 0.1",
 ]
 metrics = [
     "piq >= 0.7",
@@ -129,5 +130,7 @@ module = [
     "scipy.*",
     "skimage.*",
     "piq",
+    "torch",
+    "torch_dct",
 ]
 ignore_missing_imports = true
