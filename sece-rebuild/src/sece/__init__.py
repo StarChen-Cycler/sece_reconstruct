@@ -24,6 +24,13 @@ __all__ = [
     "secedct",
     "secedct_simple",
     "SECEDCTResult",
+    # Color functions
+    "color_sece",
+    "color_sece_simple",
+    "ColorSECEResult",
+    "color_secedct",
+    "color_secedct_simple",
+    "ColorSECEDCTResult",
     # DCT functions
     "dct2d",
     "idct2d",
@@ -40,6 +47,12 @@ def __getattr__(name: str):
         return locals()[name]
     elif name in ("secedct", "secedct_simple", "SECEDCTResult"):
         from sece.secedct import SECEDCTResult, secedct, secedct_simple
+        return locals()[name]
+    elif name in ("color_sece", "color_sece_simple", "ColorSECEResult"):
+        from sece.color import ColorSECEResult, color_sece, color_sece_simple
+        return locals()[name]
+    elif name in ("color_secedct", "color_secedct_simple", "ColorSECEDCTResult"):
+        from sece.color import ColorSECEDCTResult, color_secedct, color_secedct_simple
         return locals()[name]
     elif name in ("dct2d", "idct2d"):
         from sece.dct import dct2d, idct2d
