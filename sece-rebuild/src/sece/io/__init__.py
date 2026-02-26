@@ -6,12 +6,15 @@ alpha channel handling, and bit depth conversion.
 
 from __future__ import annotations
 
-from sece.io.reader import load_image, ensure_uint8, SUPPORTED_FORMATS
-from sece.io.writer import save_image
+from sece.io.reader import load_image, ensure_uint8, SUPPORTED_FORMATS, ImageLoadError, UnsupportedFormatError
+from sece.io.writer import save_image, ImageSaveError
 
 __all__ = [
     "load_image",
     "save_image",
     "ensure_uint8",
     "SUPPORTED_FORMATS",
+    "ImageLoadError",
+    "UnsupportedFormatError",
+    "ImageSaveError",
 ]

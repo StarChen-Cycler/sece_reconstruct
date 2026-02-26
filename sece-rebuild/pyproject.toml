@@ -36,6 +36,8 @@ dependencies = [
     "scipy >= 1.7",
     "opencv-python >= 4.5",
     "scikit-image >= 0.19",
+    "click >= 8.0",
+    "rich >= 13.0",
 ]
 
 [project.optional-dependencies]
@@ -61,7 +63,7 @@ Repository = "https://github.com/sece-rebuild/sece.git"
 "Bug Tracker" = "https://github.com/sece-rebuild/sece/issues"
 
 [project.scripts]
-sece = "sece.cli:main"
+sece = "sece.cli.main:cli"
 
 [tool.setuptools.packages.find]
 where = ["src"]
