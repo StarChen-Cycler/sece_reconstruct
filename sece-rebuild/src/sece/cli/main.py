@@ -9,7 +9,7 @@ Usage:
 """
 
 from pathlib import Path
-from typing import Optional, List
+from typing import Optional, List, Dict, Any
 import sys
 
 import click
@@ -34,8 +34,57 @@ console = Console()
 # Supported output formats
 OUTPUT_FORMATS = ["png", "jpg", "jpeg", "tiff", "bmp", "webp"]
 
-# Available metrics (placeholder - will be implemented in metrics module)
-AVAILABLE_METRICS = ["emeg", "gmsd", "ssim"]
+# Available metrics
+AVAILABLE_METRICS = ["emeg", "ssim"]  # gmsd will be added later
+
+
+def compute_metrics(
+    original: Any, enhanced: Any, metrics: List[str]
+) -> Dict[str, Optional[float]]:
+    """Compute specified metrics between original and enhanced images.
+
+    Parameters
+    ----------
+    original : np.ndarray
+        Original image
+    enhanced : np.ndarray
+        Enhanced image
+    metrics : List[str]
+        List of metric names to compute
+
+    Returns
+    -------
+    Dict[str, Optional[float]]
+        Dictionary mapping metric names to their values
+    """
+    results = {}
+
+    for metric in metrics:
+        try:
+            if metric == "emeg":
+                from sece.metrics import emeg
+
+                # EMEG measures contrast - higher is better
+                results["emeg"] = emeg(enhanced)
+
+            elif metric == "ssim":
+                from sece.metrics import ssim
+
+                # SSIM measures similarity - 1.0 is identical
+                results["ssim"] = ssim(original, enhanced)
+
+            elif metric == "gmsd":
+                # GMSD not yet implemented
+                results["gmsd"] = None
+
+            else:
+                results[metric] = None
+
+        except Exception as e:
+            console.print(f"[yellow]Warning:[/yellow] Failed to compute {metric}: {e}")
+            results[metric] = None
+
+    return results
 
 
 def validate_format(ctx, param, value: Optional[str]) -> Optional[str]:
@@ -98,6 +147,7 @@ def process_single_image(
         import cv2
 
         original_shape = image.shape
+        original_color = image.copy()
         image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
         if verbose:
             rprint(
@@ -105,6 +155,7 @@ def process_single_image(
             )
     else:
         original_shape = image.shape
+        original_color = image.copy()
 
     # Apply enhancement
     if method == "sece":
@@ -122,12 +173,10 @@ def process_single_image(
     # Save result
     save_image(enhanced, str(output_path))
 
-    # Calculate metrics (placeholder - will be implemented)
+    # Calculate metrics
     metric_results = {}
     if metrics:
-        for metric in metrics:
-            # Placeholder values
-            metric_results[metric] = None
+        metric_results = compute_metrics(image, enhanced, metrics)
 
     return {
         "input": str(input_path),
