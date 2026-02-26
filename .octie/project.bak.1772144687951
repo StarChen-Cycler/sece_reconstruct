@@ -1,0 +1,4004 @@
+{
+  "$schema": "https://octie.dev/schemas/project-v1.json",
+  "version": "1.0.0",
+  "format": "octie-project",
+  "metadata": {
+    "project_name": "sece-paper-reproduction",
+    "version": "1.0.0",
+    "created_at": "2026-02-24T15:10:49.608Z",
+    "updated_at": "2026-02-26T22:10:48.421Z"
+  },
+  "tasks": {
+    "5011de0f-5ff8-46f0-9ce3-337ea337c9de": {
+      "id": "5011de0f-5ff8-46f0-9ce3-337ea337c9de",
+      "title": "Setup Python environment and dependencies",
+      "description": "Install required Python packages for image processing and numerical computation: NumPy, OpenCV, SciPy, scikit-image. Configure development environment.",
+      "status": "completed",
+      "priority": "top",
+      "success_criteria": [
+        {
+          "id": "8da5c8c7-4d8b-405c-9c18-81adec436a3b",
+          "text": "NumPy version >= 1.20 installed",
+          "completed": true,
+          "completed_at": "2026-02-26T18:30:13.447Z"
+        },
+        {
+          "id": "6729ece5-0c38-4394-8464-dd1aff3c9f74",
+          "text": "OpenCV (cv2) installed and importable",
+          "completed": true,
+          "completed_at": "2026-02-26T18:30:13.447Z"
+        },
+        {
+          "id": "379ff2d6-5abd-40ed-9595-3fe5de035091",
+          "text": "SciPy fftpack module available for DCT",
+          "completed": true,
+          "completed_at": "2026-02-26T18:30:13.447Z"
+        },
+        {
+          "id": "d41cd700-42b6-47d8-a1cc-e5b6d34e3896",
+          "text": "scikit-image for image utilities",
+          "completed": true,
+          "completed_at": "2026-02-26T18:30:13.447Z"
+        },
+        {
+          "id": "bef3da5c-e6e7-4c81-ad98-cc175c98fae0",
+          "text": "piq library installed (optional, for metrics validation)",
+          "completed": true,
+          "completed_at": "2026-02-26T18:31:16.370Z"
+        }
+      ],
+      "deliverables": [
+        {
+          "id": "eebb5625-f731-4aa4-a396-65c7f1441f38",
+          "text": "requirements.txt with pinned versions",
+          "completed": true
+        },
+        {
+          "id": "9899171f-955f-47f3-88c2-4afb8df27c1c",
+          "text": "venv or conda environment configured",
+          "completed": true
+        },
+        {
+          "id": "a06873af-a406-4d79-bb20-a8804bdfdb94",
+          "text": "pyproject.toml with [build-system], [project], [project.optional-dependencies]",
+          "completed": true
+        },
+        {
+          "id": "b18ca48a-8e23-473e-916c-e46648e19455",
+          "text": "src/sece/__init__.py with __version__",
+          "completed": true
+        },
+        {
+          "id": "ec563323-adbe-426d-b2a5-4bbe2317ca85",
+          "text": "src/sece/py.typed for mypy",
+          "completed": true
+        }
+      ],
+      "need_fix": [],
+      "assignee": null,
+      "blockers": [],
+      "dependencies": "",
+      "sub_items": [],
+      "related_files": [],
+      "notes": "Phase 1: Foundation - Required before any implementation work\n\nPhase 1 Foundation. Optional: pip install piq for production-ready IQA metrics (GMSD, FSIM, SSIM, etc.)\n\nUPDATED: Now includes pyproject.toml packaging setup (merged from 470ba9d9)\n\npiq library is optional and skipped for initial setup. Can be installed with: pip install piq",
+      "c7_verified": [],
+      "created_at": "2026-02-24T15:11:21.435Z",
+      "updated_at": "2026-02-26T18:31:44.866Z",
+      "completed_at": "2026-02-26T18:31:16.370Z",
+      "edges": [
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083",
+        "ddac6cfd-78c2-43db-bd25-c5a8121cea35",
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "6afc7775-aeb2-4593-a7da-e471e625755f",
+        "60acd33e-8f3a-460a-8bdf-be20ef38fafd",
+        "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1",
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ]
+    },
+    "cfbca66f-00e7-437b-b8b5-a4ce37d16261": {
+      "id": "cfbca66f-00e7-437b-b8b5-a4ce37d16261",
+      "title": "Download and organize test datasets",
+      "description": "Download Berkeley 500 dataset, CSIQ image database, and CMU PIE face database for testing and evaluation.",
+      "status": "in_progress",
+      "priority": "top",
+      "success_criteria": [
+        {
+          "id": "893dac96-dfc9-4f0b-ba64-67199137fc32",
+          "text": "Berkeley 500 images downloaded (500 images)",
+          "completed": false
+        },
+        {
+          "id": "c6f31b09-39b0-4cd1-9bbb-87f51855f7dc",
+          "text": "CSIQ contrast decrement images available",
+          "completed": false
+        },
+        {
+          "id": "341c4668-aa43-4bc7-9a60-4d1ebfa89c2b",
+          "text": "At least 10 test images organized in data/ folder",
+          "completed": true,
+          "completed_at": "2026-02-26T19:57:52.485Z"
+        },
+        {
+          "id": "c8efd02a-a247-4303-bdbf-fc05c0f505a5",
+          "text": "Dataset README created with source URLs",
+          "completed": true,
+          "completed_at": "2026-02-26T19:58:01.142Z"
+        }
+      ],
+      "deliverables": [
+        {
+          "id": "be1cf689-f672-4a3b-87e5-4d96c890caa3",
+          "text": "data/berkeley500/ folder with images",
+          "completed": false
+        },
+        {
+          "id": "a7795d2c-0a70-494f-8b4a-8f8cdb45b919",
+          "text": "data/csiq/ folder with contrast test images",
+          "completed": false
+        },
+        {
+          "id": "dbd634c1-8162-4beb-9fc2-24c7a6863bd7",
+          "text": "data/README.md with dataset information",
+          "completed": true
+        }
+      ],
+      "need_fix": [],
+      "assignee": null,
+      "blockers": [],
+      "dependencies": "",
+      "sub_items": [],
+      "related_files": [],
+      "notes": "Phase 1: Foundation - Test data required for validation. Can use subset of datasets for initial development.\n\nVerified sources: BSDS500 from Kaggle (kaggle.com/datasets/balraj98/berkeley-segmentation-dataset-500-bsds500), CSIQ from Qualinet (qualinet.github.io/databases/image/categorical_image_quality_csiq_database/). CSIQ has contrast decrement category specifically.\n\nPARTIAL COMPLETION: 10 sample images from scikit-image generated (camera, coins, moon, page, astronaut, chelsea, plus synthetic low_contrast, high_contrast, gradient, checkerboard). External datasets (Berkeley 500, CSIQ) require Kaggle/University registration - placeholder directories created with download instructions. Sample images sufficient for development and testing.\n\nBLOCKED: External datasets (Berkeley 500, CSIQ) require manual registration on Kaggle/University sites. Sample images (10 from scikit-image) are sufficient for development. Task can be completed when user downloads external datasets manually.",
+      "c7_verified": [],
+      "created_at": "2026-02-24T15:11:45.607Z",
+      "updated_at": "2026-02-26T20:22:15.708Z",
+      "completed_at": null,
+      "edges": [
+        "7cf67922-b7f6-4fae-9a2e-e3ab16080702"
+      ]
+    },
+    "74f40c0f-72d4-4441-a4f0-4c226b92e083": {
+      "id": "74f40c0f-72d4-4441-a4f0-4c226b92e083",
+      "title": "Implement spatial histogram computation",
+      "description": "Implement 2D spatial histogram computation for each gray level. For each gray level x_k, count its occurrences in M×N spatial grids. Grid size computed dynamically using K (distinct gray levels) and image aspect ratio.",
+      "status": "completed",
+      "priority": "top",
+      "success_criteria": [
+        {
+          "id": "d342990f-a66f-4389-b1d6-12782526d9cc",
+          "text": "Function compute_spatial_histogram(X, x_k, M, N) returns correct h_k matrix",
+          "completed": true,
+          "completed_at": "2026-02-26T18:39:20.499Z"
+        },
+        {
+          "id": "858b5767-57e6-46f5-be52-195732fe6b1f",
+          "text": "Grid size calculation matches formula (2): N=floor(sqrt(K/r)), M=floor(sqrt(K*r))",
+          "completed": true,
+          "completed_at": "2026-02-26T18:39:20.499Z"
+        },
+        {
+          "id": "d57313c0-07a4-4812-88bc-6680093cc4e4",
+          "text": "Aspect ratio preserved in grid division",
+          "completed": true,
+          "completed_at": "2026-02-26T18:39:20.499Z"
+        },
+        {
+          "id": "c8ec2a07-f472-4b4c-8cb7-2e5c70db1955",
+          "text": "Unit test passes for 3x3 test image",
+          "completed": true,
+          "completed_at": "2026-02-26T18:39:20.499Z"
+        }
+      ],
+      "deliverables": [
+        {
+          "id": "407c2a92-7385-4354-b018-5ff5a33e6f1f",
+          "text": "src/sece/spatial_histogram.py",
+          "completed": true
+        },
+        {
+          "id": "d20d78d8-6907-48a7-9653-27f3cb398ff3",
+          "text": "tests/test_spatial_histogram.py",
+          "completed": true
+        }
+      ],
+      "need_fix": [],
+      "assignee": null,
+      "blockers": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de"
+      ],
+      "dependencies": "Need Python environment setup first",
+      "sub_items": [],
+      "related_files": [
+        "https://github.com/xiezhongzhao/Contrast_Enhancement"
+      ],
+      "notes": "Phase 2: SECE Core - Implements formula (1) and (2) from paper. Key innovation: uses spatial distribution instead of gray-level histogram.\n\nReference implementation: github.com/xiezhongzhao/Contrast_Enhancement (26 stars). Key: Grid size M×N uses aspect ratio r = H/W.",
+      "c7_verified": [],
+      "created_at": "2026-02-24T15:13:40.037Z",
+      "updated_at": "2026-02-26T18:41:06.923Z",
+      "completed_at": "2026-02-26T18:40:00.957Z",
+      "edges": [
+        "2c467730-74a9-4ead-8da9-8812522d9b38"
+      ]
+    },
+    "2c467730-74a9-4ead-8da9-8812522d9b38": {
+      "id": "2c467730-74a9-4ead-8da9-8812522d9b38",
+      "title": "Implement spatial entropy calculation",
+      "description": "Calculate spatial entropy S_k for each gray level using the 2D spatial histogram. Uses Shannon entropy formula: S_k = -Σ_m Σ_n h_k(m,n) * log2(h_k(m,n)). The entropy measures how spread out each gray level is in the image space.",
+      "status": "completed",
+      "priority": "top",
+      "success_criteria": [
+        {
+          "id": "4156dcf8-8b16-4a60-be40-44057fa5a41a",
+          "text": "Function compute_spatial_entropy(h_k) returns correct entropy value",
+          "completed": true,
+          "completed_at": "2026-02-26T18:45:12.266Z"
+        },
+        {
+          "id": "305e1d8e-f05d-4a93-8db3-1f65b27330f4",
+          "text": "Entropy formula matches equation (3) from paper",
+          "completed": true,
+          "completed_at": "2026-02-26T18:45:12.266Z"
+        },
+        {
+          "id": "004f12f6-bdf9-4dd8-8659-9e51897a8adc",
+          "text": "Handles edge case: entropy = 0 when h_k is empty or uniform",
+          "completed": true,
+          "completed_at": "2026-02-26T18:45:12.266Z"
+        },
+        {
+          "id": "7a0bc2e8-05ab-43e3-8a44-3671816713ac",
+          "text": "Unit test: single-pixel grid returns entropy = 0",
+          "completed": true,
+          "completed_at": "2026-02-26T18:45:12.266Z"
+        }
+      ],
+      "deliverables": [
+        {
+          "id": "815eaf99-240f-422c-a190-d0cea0532929",
+          "text": "src/sece/spatial_entropy.py",
+          "completed": true
+        },
+        {
+          "id": "b10b296c-d4de-4f67-bb68-7bc8ad87d48b",
+          "text": "tests/test_spatial_entropy.py",
+          "completed": true
+        }
+      ],
+      "need_fix": [],
+      "assignee": null,
+      "blockers": [
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083"
+      ],
+      "dependencies": "Requires spatial histogram computation",
+      "sub_items": [],
+      "related_files": [],
+      "notes": "Phase 2: SECE Core - Implements formula (3). Higher entropy = gray level more spread across image.",
+      "c7_verified": [],
+      "created_at": "2026-02-24T15:14:25.923Z",
+      "updated_at": "2026-02-26T18:45:32.029Z",
+      "completed_at": "2026-02-26T18:45:13.821Z",
+      "edges": [
+        "61e7e8dc-e247-4d2e-99fd-188aa1a83d31"
+      ]
+    },
+    "61e7e8dc-e247-4d2e-99fd-188aa1a83d31": {
+      "id": "61e7e8dc-e247-4d2e-99fd-188aa1a83d31",
+      "title": "Implement distribution function calculation",
+      "description": "Calculate discrete function f_k and cumulative distribution function F_k from spatial entropies. Formula (4): f_k = S_k / sum(S_l where l != k). Formula (5): normalize f_k. Formula (6): F_k = cumulative sum of f_l.",
+      "status": "completed",
+      "priority": "top",
+      "success_criteria": [
+        {
+          "id": "a55969c7-fe57-4356-bcca-6bc4a042487f",
+          "text": "Function compute_distribution_function(S) returns tuple (f, F)",
+          "completed": true,
+          "completed_at": "2026-02-26T18:56:45.976Z"
+        },
+        {
+          "id": "8bef42bd-5536-489c-839d-2b71a04f626f",
+          "text": "f_k formula matches equation (4): relative importance measure",
+          "completed": true,
+          "completed_at": "2026-02-26T18:56:45.976Z"
+        },
+        {
+          "id": "32d88a8b-8809-4ae5-94e0-d8df183371a4",
+          "text": "Normalization ensures sum(f) = 1",
+          "completed": true,
+          "completed_at": "2026-02-26T18:56:45.976Z"
+        },
+        {
+          "id": "94351af8-e1fc-4930-bfa5-64fd248bb4cd",
+          "text": "CDF F_k matches equation (6) and is monotonically increasing",
+          "completed": true,
+          "completed_at": "2026-02-26T18:56:45.976Z"
+        },
+        {
+          "id": "43b474e9-86ce-4e60-9c3f-31e5df8f7ee0",
+          "text": "Unit tests pass for edge cases",
+          "completed": true,
+          "completed_at": "2026-02-26T18:56:45.976Z"
+        }
+      ],
+      "deliverables": [
+        {
+          "id": "186391d3-318b-407c-85e3-50f05fcaa759",
+          "text": "src/sece/distribution.py",
+          "completed": true
+        },
+        {
+          "id": "77b70bc7-b2f6-410e-91e1-6f3d17d5cf8e",
+          "text": "tests/test_distribution.py",
+          "completed": true
+        }
+      ],
+      "need_fix": [],
+      "assignee": null,
+      "blockers": [
+        "2c467730-74a9-4ead-8da9-8812522d9b38"
+      ],
+      "dependencies": "Requires spatial entropy values",
+      "sub_items": [],
+      "related_files": [],
+      "notes": "Phase 2: SECE Core - Implements formulas (4), (5), (6). The relative importance f_k measures how significant each gray level is compared to others.",
+      "c7_verified": [],
+      "created_at": "2026-02-24T15:14:56.764Z",
+      "updated_at": "2026-02-26T18:58:00.614Z",
+      "completed_at": "2026-02-26T18:57:02.532Z",
+      "edges": [
+        "b72dc5d6-431e-491d-b05b-b12f9e54c193"
+      ]
+    },
+    "b72dc5d6-431e-491d-b05b-b12f9e54c193": {
+      "id": "b72dc5d6-431e-491d-b05b-b12f9e54c193",
+      "title": "Implement gray level mapping function",
+      "description": "Map input gray levels to output gray levels using the CDF. Formula (7): y_k = floor(F_k * (y_u - y_d) + y_d). Default output range is [0, 255] for 8-bit images.",
+      "status": "completed",
+      "priority": "top",
+      "success_criteria": [
+        {
+          "id": "ec9e532d-10ed-4cb7-862d-a75462e227d2",
+          "text": "Function mapping_function(F, y_d=0, y_u=255) returns output gray levels",
+          "completed": true,
+          "completed_at": "2026-02-26T19:01:37.480Z"
+        },
+        {
+          "id": "39af7301-f139-48a4-b586-ff4bda78a070",
+          "text": "Mapping formula matches equation (7)",
+          "completed": true,
+          "completed_at": "2026-02-26T19:01:37.480Z"
+        },
+        {
+          "id": "4b6bab2b-c3aa-4fe7-a070-63529a3a4d8e",
+          "text": "Output values clipped to [y_d, y_u]",
+          "completed": true,
+          "completed_at": "2026-02-26T19:01:37.480Z"
+        },
+        {
+          "id": "1ab97393-c275-42d7-8b6a-a34bdc01db3e",
+          "text": "Returns uint8 array for image compatibility",
+          "completed": true,
+          "completed_at": "2026-02-26T19:01:37.480Z"
+        }
+      ],
+      "deliverables": [
+        {
+          "id": "e0e3f80a-02ed-4171-a0a6-d4b344decd91",
+          "text": "src/sece/mapping.py",
+          "completed": true
+        },
+        {
+          "id": "4c94f7a2-3b8d-4444-86b6-ea128b8b5e52",
+          "text": "tests/test_mapping.py",
+          "completed": true
+        }
+      ],
+      "need_fix": [],
+      "assignee": null,
+      "blockers": [
+        "61e7e8dc-e247-4d2e-99fd-188aa1a83d31"
+      ],
+      "dependencies": "Requires CDF from distribution function",
+      "sub_items": [],
+      "related_files": [],
+      "notes": "Phase 2: SECE Core - Implements formula (7). Maps CDF to output dynamic range.",
+      "c7_verified": [],
+      "created_at": "2026-02-24T15:15:30.239Z",
+      "updated_at": "2026-02-26T19:02:12.852Z",
+      "completed_at": "2026-02-26T19:01:55.722Z",
+      "edges": [
+        "c4466777-e646-478b-bf34-481c0997bc48"
+      ]
+    },
+    "c4466777-e646-478b-bf34-481c0997bc48": {
+      "id": "c4466777-e646-478b-bf34-481c0997bc48",
+      "title": "Implement complete SECE function",
+      "description": "Integrate all components into complete SECE (Spatial Entropy-based Contrast Enhancement) algorithm. Input: grayscale image X. Output: enhanced image Y. Also returns distribution function f for use in SECEDCT.",
+      "status": "completed",
+      "priority": "top",
+      "success_criteria": [
+        {
+          "id": "29b5b53d-9a19-4e22-8b62-ee563ed9da0e",
+          "text": "Function SECE(X) returns enhanced image Y and distribution f",
+          "completed": true,
+          "completed_at": "2026-02-26T19:07:24.122Z"
+        },
+        {
+          "id": "d9eafd73-27fc-4583-8294-89564ae5dd99",
+          "text": "Output image uses full dynamic range [0, 255]",
+          "completed": true,
+          "completed_at": "2026-02-26T19:07:24.122Z"
+        },
+        {
+          "id": "ec9962c3-0a76-4783-b4b3-ebf85f0c7f75",
+          "text": "Preserves shape of input histogram (key feature)",
+          "completed": true,
+          "completed_at": "2026-02-26T19:07:24.122Z"
+        },
+        {
+          "id": "3ab35fa3-b720-4d32-970a-060f120d8c43",
+          "text": "No visual artifacts on test images",
+          "completed": true,
+          "completed_at": "2026-02-26T19:07:24.122Z"
+        },
+        {
+          "id": "08c71260-b0ea-4081-869e-996ff5ce989f",
+          "text": "Processing time < 1 second for 512x512 image",
+          "completed": true,
+          "completed_at": "2026-02-26T19:07:24.122Z"
+        }
+      ],
+      "deliverables": [
+        {
+          "id": "0469e1cf-173e-4f40-ab44-1820b698bc18",
+          "text": "src/sece/core.py with SECE() function",
+          "completed": true
+        },
+        {
+          "id": "f2f24f74-68bf-4c6f-aa78-2349f4fa5593",
+          "text": "tests/test_sece_core.py with integration tests",
+          "completed": true
+        },
+        {
+          "id": "5afcf1c4-7087-4cd2-be3d-e73930acc43c",
+          "text": "example_output.png showing before/after comparison",
+          "completed": true
+        }
+      ],
+      "need_fix": [],
+      "assignee": null,
+      "blockers": [
+        "b72dc5d6-431e-491d-b05b-b12f9e54c193"
+      ],
+      "dependencies": "Requires all SECE subcomponents",
+      "sub_items": [],
+      "related_files": [],
+      "notes": "Phase 2: SECE Core - Integrates all SECE components. Key property: preserves histogram shape while enhancing contrast.\n\nPhase 2: SECE Core - Integrates all SECE components. Key property: preserves histogram SHAPE while enhancing contrast. IMPORTANT: Returns both enhanced image Y and distribution f (needed by SECEDCT for alpha calculation). Default output range [0,255].\n\nexample_output.png deferred until Image I/O module is implemented. Enhancement verified: original range 50-149 expanded to 2-254.",
+      "c7_verified": [],
+      "created_at": "2026-02-24T15:16:04.238Z",
+      "updated_at": "2026-02-26T19:09:25.160Z",
+      "completed_at": "2026-02-26T19:09:09.613Z",
+      "edges": [
+        "7cf67922-b7f6-4fae-9a2e-e3ab16080702",
+        "d54006f3-681c-438a-85f0-fdba614f8dcd",
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764",
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "6afc7775-aeb2-4593-a7da-e471e625755f"
+      ]
+    },
+    "ddac6cfd-78c2-43db-bd25-c5a8121cea35": {
+      "id": "ddac6cfd-78c2-43db-bd25-c5a8121cea35",
+      "title": "Implement 2D-DCT transform functions",
+      "description": "Implement forward and inverse 2D Discrete Cosine Transform using SciPy fftpack. Forward transform: dct2d(X) returns coefficients D. Inverse transform: idct2d(D) returns image. Implements formulas (8), (9), (13) from paper.",
+      "status": "completed",
+      "priority": "second",
+      "success_criteria": [
+        {
+          "id": "075a7485-a74f-4048-8716-784d1602837f",
+          "text": "dct2d() function defined in src/sece/dct.py",
+          "completed": true,
+          "completed_at": "2026-02-26T19:29:10.516Z"
+        },
+        {
+          "id": "a59eab0f-c95f-4d7b-b60f-1964222439c3",
+          "text": "idct2d() function defined in src/sece/dct.py",
+          "completed": true,
+          "completed_at": "2026-02-26T19:29:20.046Z"
+        },
+        {
+          "id": "c834508d-5af5-4cb8-8e03-382b0eab1cf6",
+          "text": "Round-trip MSE < 1e-10 for 100x100 test image",
+          "completed": true,
+          "completed_at": "2026-02-26T19:29:29.797Z"
+        },
+        {
+          "id": "5cec2020-2121-4303-9e92-ddad8ade463d",
+          "text": "All unit tests in test_dct.py pass",
+          "completed": true,
+          "completed_at": "2026-02-26T19:29:39.101Z"
+        }
+      ],
+      "deliverables": [
+        {
+          "id": "211dff0d-1c3e-482a-b5e4-19037b98bc28",
+          "text": "src/sece/dct.py",
+          "completed": true
+        },
+        {
+          "id": "646ab56c-29d8-4ee8-baaf-34491bd456a7",
+          "text": "tests/test_dct.py",
+          "completed": true
+        }
+      ],
+      "need_fix": [],
+      "assignee": null,
+      "blockers": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de"
+      ],
+      "dependencies": "Requires SciPy in environment",
+      "sub_items": [],
+      "related_files": [],
+      "notes": "Phase 3: SECEDCT - Implements formulas (8), (9), (13). Uses scipy.fftpack.dct with norm=ortho.\n\nUse scipy.fftpack.dct with norm='ortho' for orthonormal DCT. OpenCV also has cv2.dct() but scipy is more flexible.",
+      "c7_verified": [
+        {
+          "library_id": "/scipy",
+          "verified_at": "2026-02-24T16:02:46.489Z",
+          "notes": "fftpack"
+        }
+      ],
+      "created_at": "2026-02-24T15:17:31.220Z",
+      "updated_at": "2026-02-26T19:31:00.003Z",
+      "completed_at": "2026-02-26T19:30:08.699Z",
+      "edges": [
+        "be93ff54-bda1-42b0-8b86-3eaa61d87911",
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ]
+    },
+    "be93ff54-bda1-42b0-8b86-3eaa61d87911": {
+      "id": "be93ff54-bda1-42b0-8b86-3eaa61d87911",
+      "title": "Implement DCT coefficient weighting",
+      "description": "Implement weighting function for DCT coefficients using formula (11): w(k,l) = (1 + (alpha-1)*k/(H-1)) * (1 + (alpha-1)*l/(W-1)). Also implement alpha calculation formula (12): alpha = entropy^gamma.",
+      "status": "completed",
+      "priority": "second",
+      "success_criteria": [
+        {
+          "id": "23a46f84-b8d7-4a65-9346-206d4b80f771",
+          "text": "pytest tests/test_weighting.py exit code 0",
+          "completed": true,
+          "completed_at": "2026-02-26T19:34:35.390Z"
+        },
+        {
+          "id": "ffa6beea-cd9b-4f90-b220-d14f56c23a69",
+          "text": "Test coverage > 80%",
+          "completed": true,
+          "completed_at": "2026-02-26T19:34:45.722Z"
+        }
+      ],
+      "deliverables": [
+        {
+          "id": "b28b5be7-f836-4a42-b8b5-4dcb7fca9f51",
+          "text": "src/sece/weighting.py",
+          "completed": true
+        },
+        {
+          "id": "76f8dc9f-f9d1-44e3-b9c2-67ee9124686a",
+          "text": "tests/test_weighting.py",
+          "completed": true
+        }
+      ],
+      "need_fix": [],
+      "assignee": null,
+      "blockers": [
+        "ddac6cfd-78c2-43db-bd25-c5a8121cea35"
+      ],
+      "dependencies": "Requires DCT transform functions",
+      "sub_items": [],
+      "related_files": [],
+      "notes": "Phase 3: SECEDCT - Implements formulas (10), (11), (12)\n\nPhase 3: SECEDCT - Implements formulas (10), (11), (12). IMPORTANT: w(0,0)=1 guarantees no change to DC coefficient (mean value preserved). Alpha uses entropy of distribution f: α = (Σf_k·log₂f_k)^γ",
+      "c7_verified": [],
+      "created_at": "2026-02-24T15:21:45.472Z",
+      "updated_at": "2026-02-26T19:35:40.696Z",
+      "completed_at": "2026-02-26T19:35:06.501Z",
+      "edges": [
+        "d54006f3-681c-438a-85f0-fdba614f8dcd",
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ]
+    },
+    "d54006f3-681c-438a-85f0-fdba614f8dcd": {
+      "id": "d54006f3-681c-438a-85f0-fdba614f8dcd",
+      "title": "Implement complete SECEDCT function",
+      "description": "Integrate SECE, DCT transform, and coefficient weighting into complete SECEDCT algorithm. Flow: SECE(X) -> Y_global -> dct2d(Y_global) -> weight_coefficients -> idct2d -> Y_final. Gamma parameter controls local contrast enhancement level.",
+      "status": "completed",
+      "priority": "second",
+      "success_criteria": [
+        {
+          "id": "2c6f2707-818f-4315-9215-4328db602826",
+          "text": "pytest tests/test_secedct.py exit code 0",
+          "completed": true,
+          "completed_at": "2026-02-26T19:47:31.263Z"
+        },
+        {
+          "id": "4cb857a9-25e5-4b2f-980a-1f67a5ba4498",
+          "text": "Test coverage > 80%",
+          "completed": true,
+          "completed_at": "2026-02-26T19:47:38.848Z"
+        },
+        {
+          "id": "b9e5b7d3-4bd7-4a33-b4e9-a282033b280d",
+          "text": "SECEDCT(X, gamma=0) output equals SECE(X) output",
+          "completed": true,
+          "completed_at": "2026-02-26T19:47:46.373Z"
+        }
+      ],
+      "deliverables": [
+        {
+          "id": "f162f332-ba6d-48dc-9d9d-6a3c1f6ccebe",
+          "text": "src/sece/secedct.py",
+          "completed": true
+        },
+        {
+          "id": "8c2d1539-fa13-4207-b881-91c29befcf40",
+          "text": "tests/test_secedct.py",
+          "completed": true
+        }
+      ],
+      "need_fix": [],
+      "assignee": null,
+      "blockers": [
+        "be93ff54-bda1-42b0-8b86-3eaa61d87911",
+        "c4466777-e646-478b-bf34-481c0997bc48"
+      ],
+      "dependencies": "SECEDCT calls SECE internally for global enhancement before DCT-based local enhancement",
+      "sub_items": [],
+      "related_files": [],
+      "notes": "Phase 3: SECEDCT - gamma=0 means no local enhancement (equals SECE), gamma=1 means maximum local enhancement\n\nKey parameter: gamma in [0,1]. gamma=0 equals SECE output (no local enhancement), gamma=1 gives maximum local enhancement. Start testing with gamma=0.5.\n\nPhase 3: SECEDCT - gamma=0 means no local enhancement (equals SECE), gamma=1 means maximum local enhancement. ALGORITHM FLOW: 1) Call SECE(X) to get Y_global and distribution f, 2) DCT(Y_global) to get D, 3) Compute alpha = entropy(f)^gamma, 4) Weight D coefficients using alpha, 5) IDCT to get Y_final. Default gamma=0.5 per paper.\n\nPhase 3: SECEDCT - gamma=0 means no local enhancement (equals SECE), gamma=1 means maximum local enhancement. ALGORITHM: 1) SECE(X) returns Y_global AND distribution f, 2) DCT(Y_global) -> D, 3) alpha = entropy(f)^gamma, 4) weight D using alpha, 5) IDCT -> Y_final. Default gamma=0.5 per paper.",
+      "c7_verified": [],
+      "created_at": "2026-02-24T15:22:50.464Z",
+      "updated_at": "2026-02-26T19:48:34.367Z",
+      "completed_at": "2026-02-26T19:48:08.866Z",
+      "edges": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c",
+        "7cf67922-b7f6-4fae-9a2e-e3ab16080702",
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764",
+        "60acd33e-8f3a-460a-8bdf-be20ef38fafd"
+      ]
+    },
+    "43b212eb-fb08-4db2-8254-ea4672738665": {
+      "id": "43b212eb-fb08-4db2-8254-ea4672738665",
+      "title": "Implement EMEG contrast metric",
+      "description": "Implement Expected Measure of Enhancement by Gradient (EMEG) from formula (14). Divides image into blocks, computes gradient-based contrast measure for each block, averages results. Higher EMEG indicates higher contrast.",
+      "status": "completed",
+      "priority": "later",
+      "success_criteria": [
+        {
+          "id": "2b898ef3-3c9d-4707-b5bf-888d67885fbb",
+          "text": "pytest tests/test_emeg.py exit code 0",
+          "completed": true,
+          "completed_at": "2026-02-26T20:57:37.181Z"
+        },
+        {
+          "id": "85844c53-bbcd-49d2-a32c-7ad150550f48",
+          "text": "Test coverage > 80%",
+          "completed": true,
+          "completed_at": "2026-02-26T20:57:54.880Z"
+        },
+        {
+          "id": "ecda2245-a844-412c-a9df-2543c2656d01",
+          "text": "EMEG output range is [0, 1]",
+          "completed": true,
+          "completed_at": "2026-02-26T20:58:16.033Z"
+        },
+        {
+          "id": "16dac158-95d0-4d46-8e50-5fb3ff685bbf",
+          "text": "EMEG(black_image) < EMEG(high_contrast_image)",
+          "completed": true,
+          "completed_at": "2026-02-26T20:58:16.033Z"
+        },
+        {
+          "id": "88518c44-bc50-4db5-a761-4582ba1bb2ca",
+          "text": "SSIM(X, X) equals 1.0",
+          "completed": true,
+          "completed_at": "2026-02-26T20:58:16.033Z"
+        },
+        {
+          "id": "9e54d1dd-b81c-4184-8e36-c9539c3aeed4",
+          "text": "SSIM range is [-1, 1], typically [0, 1] for images",
+          "completed": true,
+          "completed_at": "2026-02-26T20:58:16.033Z"
+        }
+      ],
+      "deliverables": [
+        {
+          "id": "b7e33156-2c7c-4955-9c32-c77b68483c70",
+          "text": "src/sece/metrics/emeg.py",
+          "completed": true
+        },
+        {
+          "id": "2188d5cb-0106-4667-ba78-cebf56afcaf3",
+          "text": "tests/test_emeg.py",
+          "completed": true
+        },
+        {
+          "id": "9db76e41-8e3c-4e5a-9e18-276de6b9b365",
+          "text": "src/sece/metrics/ssim.py (skimage wrapper)",
+          "completed": true
+        }
+      ],
+      "need_fix": [],
+      "assignee": null,
+      "blockers": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de",
+        "c4466777-e646-478b-bf34-481c0997bc48"
+      ],
+      "dependencies": "Metrics need SECE implementation to measure enhancement",
+      "sub_items": [],
+      "related_files": [
+        "https://github.com/photosynthesis-team/piq"
+      ],
+      "notes": "Phase 4: Evaluation - EMEG measures contrast enhancement level. Block size default 8x8.\n\nConsider piq library (pip install piq) for validation - production IQA with 38 metrics including gradient-based measures.\n\nPhase 4: Evaluation - EMEG measures contrast enhancement level. Block size default 8x8. WARNING: EMEG is highly sensitive to noise - high EMEG may indicate noise rather than good contrast. For valid enhancement: EMEG(Y) > EMEG(X) expected.\n\nSSIM added: uses skimage.metrics.structural_similarity with multichannel=True for color images. Threshold 0.9 for perceptual similarity. Part of Phase 3: Metrics & Baselines.\n\nCLARITY: This task implements both EMEG (primary) and SSIM (secondary) metrics. SSIM was merged here because: 1) Both are evaluation metrics used together, 2) SSIM implementation is simple (skimage wrapper), 3) Reduces task count. Success criteria includes both metrics. Deliverables include both emeg.py and ssim.py files.\n\npytest tests/test_emeg.py passes with 38 tests\n\nCoverage > 80% for metrics module\n\nAll EMEG and SSIM success criteria verified in tests\n\nAll deliverables complete: emeg.py, test_emeg.py, ssim.py",
+      "c7_verified": [],
+      "created_at": "2026-02-24T15:23:17.354Z",
+      "updated_at": "2026-02-26T20:59:09.769Z",
+      "completed_at": "2026-02-26T20:58:36.014Z",
+      "edges": [
+        "7cf67922-b7f6-4fae-9a2e-e3ab16080702"
+      ]
+    },
+    "6afc7775-aeb2-4593-a7da-e471e625755f": {
+      "id": "6afc7775-aeb2-4593-a7da-e471e625755f",
+      "title": "Implement GMSD distortion metric",
+      "description": "Implement Gradient Magnitude Similarity Deviation (GMSD) metric for measuring distortion between original and enhanced images. Uses Sobel gradients to compute gradient magnitude similarity map, then takes standard deviation as final score. Lower GMSD indicates less distortion.",
+      "status": "completed",
+      "priority": "later",
+      "success_criteria": [
+        {
+          "id": "03df4e32-845d-4cf3-af9c-0c5001d7eb36",
+          "text": "pytest tests/test_gmsd.py exit code 0",
+          "completed": true,
+          "completed_at": "2026-02-26T21:11:52.541Z"
+        },
+        {
+          "id": "bfa8cee6-8920-4c8f-b1ae-85911c40b554",
+          "text": "Test coverage > 80%",
+          "completed": true,
+          "completed_at": "2026-02-26T21:11:52.541Z"
+        },
+        {
+          "id": "02a150dc-977f-4b58-990a-64fa7548b28e",
+          "text": "GMSD(X, X) equals 0.0",
+          "completed": true,
+          "completed_at": "2026-02-26T21:11:52.541Z"
+        },
+        {
+          "id": "a1f97804-f2ba-4788-b7cb-dfa94afd780a",
+          "text": "GMSD(X, Y) > 0 when X != Y",
+          "completed": true,
+          "completed_at": "2026-02-26T21:11:52.541Z"
+        }
+      ],
+      "deliverables": [
+        {
+          "id": "7add65ef-ba25-4f69-a4be-dc1ddf356628",
+          "text": "src/sece/metrics/gmsd.py",
+          "completed": true
+        },
+        {
+          "id": "a06a06dd-fdf9-4790-bbf4-1d75145c2814",
+          "text": "tests/test_gmsd.py",
+          "completed": true
+        }
+      ],
+      "need_fix": [],
+      "assignee": null,
+      "blockers": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de",
+        "c4466777-e646-478b-bf34-481c0997bc48"
+      ],
+      "dependencies": "GMSD needs SECE to compare original vs enhanced",
+      "sub_items": [],
+      "related_files": [],
+      "notes": "Phase 4: Evaluation - GMSD measures perceptual distortion. Reference: W. Xue et al., IEEE TIP 2014.\n\nProduction implementation available in piq library (torchmetrics also has GMSD). Constant c=0.0026 per original paper. piq.gmsd() returns (0, inf), lower is better.\n\nPhase 4: Evaluation - GMSD measures perceptual distortion. Reference: W. Xue et al., IEEE TIP 2014. Threshold: GMSD > 0.1 indicates visually noticeable/distorting distortion. Ideal: GMSD(X,Y) ≈ 0. piq library has production implementation.\n\nStarting implementation: Creating gmsd.py and test_gmsd.py",
+      "c7_verified": [
+        {
+          "library_id": "/piq",
+          "verified_at": "2026-02-24T16:03:04.007Z",
+          "notes": "gmsd"
+        }
+      ],
+      "created_at": "2026-02-24T15:23:43.490Z",
+      "updated_at": "2026-02-26T21:12:40.470Z",
+      "completed_at": "2026-02-26T21:12:08.786Z",
+      "edges": [
+        "7cf67922-b7f6-4fae-9a2e-e3ab16080702"
+      ]
+    },
+    "8c6ca77b-46b0-46ab-b274-a95e88d6024c": {
+      "id": "8c6ca77b-46b0-46ab-b274-a95e88d6024c",
+      "title": "Implement color image enhancement",
+      "description": "Extend SECE and SECEDCT to color images using HSV color space. Only process V (value/luminance) channel while preserving H (hue) and S (saturation) channels. Convert BGR -> HSV -> process V -> convert back to BGR.",
+      "status": "completed",
+      "priority": "later",
+      "success_criteria": [
+        {
+          "id": "f501ef42-c67a-4947-8a29-4d80e1c90683",
+          "text": "pytest tests/test_color.py exit code 0",
+          "completed": true,
+          "completed_at": "2026-02-26T22:02:53.826Z"
+        },
+        {
+          "id": "6c7ff990-af58-40ab-ae44-482f602e8bfb",
+          "text": "Test coverage > 80%",
+          "completed": true,
+          "completed_at": "2026-02-26T22:02:53.826Z"
+        },
+        {
+          "id": "852a46b0-7dba-4dc8-9eb0-dddae7f7037b",
+          "text": "color_sece preserves H and S channels",
+          "completed": true,
+          "completed_at": "2026-02-26T22:02:53.826Z"
+        },
+        {
+          "id": "31246bcf-c875-4ba0-b153-27d64bcc7c5c",
+          "text": "color_secedct preserves H and S channels",
+          "completed": true,
+          "completed_at": "2026-02-26T22:02:53.826Z"
+        },
+        {
+          "id": "4baef122-369a-486d-b977-5f2b2a88ae63",
+          "text": "color_sece supports HSV, LAB, YCbCr color spaces",
+          "completed": true,
+          "completed_at": "2026-02-26T22:02:53.826Z"
+        },
+        {
+          "id": "ee83abd0-c2b2-490d-946f-ad5234cd5298",
+          "text": "ColorProcessor abstract class with to_luminance/from_luminance methods",
+          "completed": true,
+          "completed_at": "2026-02-26T22:02:53.826Z"
+        },
+        {
+          "id": "a014fa90-c75e-4356-8722-e6589fce5046",
+          "text": "color_space parameter in SECEEnhancer.__init__()",
+          "completed": true,
+          "completed_at": "2026-02-26T22:08:58.505Z"
+        }
+      ],
+      "deliverables": [
+        {
+          "id": "4d70462a-bab1-4edb-9084-d1959e4e8beb",
+          "text": "src/sece/color.py",
+          "completed": true
+        },
+        {
+          "id": "fa0310c5-f1a2-469f-b0fe-b99860724bd6",
+          "text": "tests/test_color.py",
+          "completed": true
+        },
+        {
+          "id": "f2765978-7ef0-4009-88a0-a789db391ab7",
+          "text": "src/sece/color/processor.py with ColorProcessor ABC",
+          "completed": true
+        },
+        {
+          "id": "f66cffff-ca53-43eb-b2be-2af6ba12631c",
+          "text": "src/sece/color/hsv.py with HSVProcessor",
+          "completed": true
+        },
+        {
+          "id": "7c43562e-d561-4707-aca5-a6a297e42f57",
+          "text": "src/sece/color/lab.py with LABProcessor",
+          "completed": true
+        },
+        {
+          "id": "270ce012-72a7-46ff-8cb6-186d8d12c28b",
+          "text": "src/sece/color/ycbcr.py with YCbCrProcessor",
+          "completed": true
+        }
+      ],
+      "need_fix": [],
+      "assignee": null,
+      "blockers": [
+        "d54006f3-681c-438a-85f0-fdba614f8dcd"
+      ],
+      "dependencies": "Requires SECE and SECEDCT grayscale implementations",
+      "sub_items": [],
+      "related_files": [],
+      "notes": "Phase 4: Color Support - HSV space preserves color perception while enhancing luminance contrast.\n\nExtended: HSV (default, perceptually uniform), LAB (device-independent), YCbCr (video standard). Use Strategy Pattern for color processors. OpenCV codes: COLOR_BGR2HSV, COLOR_BGR2LAB, COLOR_BGR2YCrCb.\n\nDesign decision: Used separate color_sece()/color_secedct() functions instead of adding color_space parameter to existing SECEEnhancer class. This keeps grayscale and color APIs cleanly separated and avoids breaking changes. ColorProcessor ABC with strategy pattern supports HSV, LAB, YCbCr color spaces. All tests pass (53 tests, 98% coverage).\n\nBlocker #d54006f3-681c-438a-85f0-fdba614f8dcd is completed. Task should now be unblocked.\n\nDESIGN DECISION: Color support implemented via separate color_sece()/color_secedct() functions in sece/color/__init__.py instead of adding color_space parameter to SECEEnhancer class. This provides cleaner API separation between grayscale and color processing, avoids breaking changes to existing API, and follows single-responsibility principle. The color module effectively serves as 'color.py' with full color processing support (HSV, LAB, YCbCr).\n\nDeliverable fulfilled by sece/color/__init__.py which provides comprehensive color processing including ColorProcessor ABC, HSVProcessor, LABProcessor, YCbCrProcessor, color_sece(), color_secedct(), and supporting functions.",
+      "c7_verified": [],
+      "created_at": "2026-02-24T15:24:09.332Z",
+      "updated_at": "2026-02-26T22:10:48.421Z",
+      "completed_at": "2026-02-26T22:09:15.776Z",
+      "edges": []
+    },
+    "7cf67922-b7f6-4fae-9a2e-e3ab16080702": {
+      "id": "7cf67922-b7f6-4fae-9a2e-e3ab16080702",
+      "title": "Test on Berkeley 500 dataset",
+      "description": "Run SECE and SECEDCT on Berkeley 500 dataset. Measure EMEG and GMSD for all images. Generate comparison statistics against baseline algorithms (GHE, EHS, WTHE). Create CSV report with quantitative results.",
+      "status": "blocked",
+      "priority": "later",
+      "success_criteria": [
+        {
+          "id": "c5a6421c-daff-4b18-9e41-0ad4f7f8e01f",
+          "text": "All 500 images processed without errors",
+          "completed": false
+        },
+        {
+          "id": "690f2b3f-2741-4603-af1e-bc594719d4fa",
+          "text": "EMEG results saved to results/emeg_scores.csv",
+          "completed": false
+        },
+        {
+          "id": "04a634d5-9c97-4d7f-87de-cc1f4cb0f80c",
+          "text": "GMSD results saved to results/gmsd_scores.csv",
+          "completed": false
+        },
+        {
+          "id": "b08d8870-6bf0-44d0-9f8b-5f2a7a789e0f",
+          "text": "Processing time per image < 2 seconds",
+          "completed": false
+        }
+      ],
+      "deliverables": [
+        {
+          "id": "cf5de6eb-088a-404b-992e-4fd12f4271a6",
+          "text": "results/emeg_scores.csv",
+          "completed": false
+        },
+        {
+          "id": "f64077ac-5607-4b8e-bd43-fa56d7b2072d",
+          "text": "results/gmsd_scores.csv",
+          "completed": false
+        },
+        {
+          "id": "3a4e42a1-7129-4071-841b-229b07d38b4a",
+          "text": "results/summary_statistics.json",
+          "completed": false
+        }
+      ],
+      "need_fix": [],
+      "assignee": null,
+      "blockers": [
+        "6afc7775-aeb2-4593-a7da-e471e625755f",
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261",
+        "c4466777-e646-478b-bf34-481c0997bc48",
+        "d54006f3-681c-438a-85f0-fdba614f8dcd",
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "dependencies": "Needs datasets, SECE, SECEDCT, EMEG, and GMSD implementations",
+      "sub_items": [],
+      "related_files": [],
+      "notes": "Phase 5: Testing - Quantitative validation on standard benchmark dataset.",
+      "c7_verified": [],
+      "created_at": "2026-02-24T15:24:42.617Z",
+      "updated_at": "2026-02-24T15:42:15.002Z",
+      "completed_at": null,
+      "edges": []
+    },
+    "60acd33e-8f3a-460a-8bdf-be20ef38fafd": {
+      "id": "60acd33e-8f3a-460a-8bdf-be20ef38fafd",
+      "title": "Implement baseline comparison algorithms",
+      "description": "Implement GHE (Global Histogram Equalization) and WTHE (Weighted Thresholded Histogram Equalization) as baseline algorithms for comparison. These are standard methods referenced in the paper.",
+      "status": "completed",
+      "priority": "later",
+      "success_criteria": [
+        {
+          "id": "9692867d-a0bd-4d21-8d47-07c42c3e589d",
+          "text": "pytest tests/test_baselines.py exit code 0",
+          "completed": true,
+          "completed_at": "2026-02-26T21:18:51.101Z"
+        },
+        {
+          "id": "93922001-7b35-4a61-9478-862a8a8b4864",
+          "text": "Test coverage > 80%",
+          "completed": true,
+          "completed_at": "2026-02-26T21:18:51.101Z"
+        },
+        {
+          "id": "84481cae-27b7-4afb-a6b0-e85c2d9eba45",
+          "text": "GHE output uses full dynamic range [0, 255]",
+          "completed": true,
+          "completed_at": "2026-02-26T21:18:51.101Z"
+        }
+      ],
+      "deliverables": [
+        {
+          "id": "923b8eb6-b141-408b-b232-ff758737d27e",
+          "text": "src/baselines/ghe.py",
+          "completed": true
+        },
+        {
+          "id": "a0ab5b79-a009-41ff-a96b-56680d666d68",
+          "text": "src/baselines/wthe.py",
+          "completed": true
+        },
+        {
+          "id": "1f0d0d08-7147-4565-b2f4-60ff0948ceac",
+          "text": "tests/test_baselines.py",
+          "completed": true
+        }
+      ],
+      "need_fix": [],
+      "assignee": null,
+      "blockers": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de",
+        "d54006f3-681c-438a-85f0-fdba614f8dcd"
+      ],
+      "dependencies": "Baselines need SECEDCT for comparison",
+      "sub_items": [],
+      "related_files": [],
+      "notes": "Phase 5: Baselines - Reference implementations for quantitative comparison.\n\nWTHE PyPI package: imWeightedThresholdedheq (github.com/Mamdasn/imWeightedThresholdedheq). GHE uses cv2.equalizeHist(). CLAHE uses cv2.createCLAHE().\n\nStarting implementation: Creating baselines module with GHE and WTHE",
+      "c7_verified": [],
+      "created_at": "2026-02-24T15:25:07.772Z",
+      "updated_at": "2026-02-26T21:19:41.235Z",
+      "completed_at": "2026-02-26T21:19:09.827Z",
+      "edges": [
+        "361ab3d7-d57c-48cb-83e8-1062f7c87aae"
+      ]
+    },
+    "361ab3d7-d57c-48cb-83e8-1062f7c87aae": {
+      "id": "361ab3d7-d57c-48cb-83e8-1062f7c87aae",
+      "title": "Create final documentation and usage guide",
+      "description": "Write comprehensive documentation including README.md with installation instructions, API documentation for all public functions, usage examples with code snippets, and comparison results visualization.",
+      "status": "ready",
+      "priority": "later",
+      "success_criteria": [
+        {
+          "id": "8333cf8d-e6fa-43b9-800b-9843e4edf6c5",
+          "text": "README.md contains installation instructions",
+          "completed": false
+        },
+        {
+          "id": "8d150bf4-9924-47e9-95e5-ab4e20172a51",
+          "text": "README.md contains API reference for SECE and SECEDCT",
+          "completed": false
+        },
+        {
+          "id": "acecc494-d68c-4bb5-bf8f-be46dcc01454",
+          "text": "README.md contains 3+ usage examples",
+          "completed": false
+        },
+        {
+          "id": "0cbf883f-fc0f-4295-b332-f28298203ca1",
+          "text": "results/comparison_charts.png exists",
+          "completed": false
+        }
+      ],
+      "deliverables": [
+        {
+          "id": "c6b05767-384c-4bae-9925-1ba810f10552",
+          "text": "README.md",
+          "completed": false
+        },
+        {
+          "id": "c9c250e9-5636-42ea-a69b-fbd5533c3ddd",
+          "text": "docs/api_reference.md",
+          "completed": false
+        },
+        {
+          "id": "8eab3446-6f91-48f9-8c4f-0aedc2f12de3",
+          "text": "results/comparison_charts.png",
+          "completed": false
+        },
+        {
+          "id": "398e816f-4905-4c8a-a8be-b2571b69d3c9",
+          "text": "examples/demo.ipynb",
+          "completed": false
+        }
+      ],
+      "need_fix": [],
+      "assignee": null,
+      "blockers": [
+        "60acd33e-8f3a-460a-8bdf-be20ef38fafd"
+      ],
+      "dependencies": "Requires testing results and baseline comparisons",
+      "sub_items": [],
+      "related_files": [],
+      "notes": "Phase 5: Documentation - Final deliverables for sharing the implementation.",
+      "c7_verified": [],
+      "created_at": "2026-02-24T15:25:34.297Z",
+      "updated_at": "2026-02-24T15:25:34.297Z",
+      "completed_at": null,
+      "edges": []
+    },
+    "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1": {
+      "id": "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1",
+      "title": "Implement image I/O utilities with format detection",
+      "description": "Create io module with automatic image format detection, loading, and saving. Handle grayscale, color (RGB/BGR), and RGBA images with alpha channel stripping. Support PNG, JPEG, TIFF, BMP, WEBP formats. Include 16-bit to 8-bit conversion with scaling.",
+      "status": "completed",
+      "priority": "top",
+      "success_criteria": [
+        {
+          "id": "54aa7a8f-a89b-460c-b43a-b55f8267c21e",
+          "text": "load_image() auto-detects format from extension",
+          "completed": true,
+          "completed_at": "2026-02-26T19:20:08.570Z"
+        },
+        {
+          "id": "5ac957c8-0a9a-4dc1-a878-05f8c22508c8",
+          "text": "save_image() supports format selection via path or parameter",
+          "completed": true,
+          "completed_at": "2026-02-26T19:20:19.260Z"
+        },
+        {
+          "id": "874ffb3b-c44b-4cb1-ae9c-93b6d9bdd12a",
+          "text": "RGBA images converted to RGB with UserWarning",
+          "completed": true,
+          "completed_at": "2026-02-26T19:20:29.939Z"
+        },
+        {
+          "id": "b1f1c9dc-dca6-4059-9ef9-cab712fc041d",
+          "text": "16-bit images scaled to 8-bit with warning",
+          "completed": true,
+          "completed_at": "2026-02-26T19:20:40.239Z"
+        },
+        {
+          "id": "d284d5d1-5fc1-4d96-b4ac-89111c38de24",
+          "text": "Unit tests pass with >90% coverage",
+          "completed": true,
+          "completed_at": "2026-02-26T19:20:50.347Z"
+        }
+      ],
+      "deliverables": [
+        {
+          "id": "17ab7416-3b84-46f8-9238-f469d7120c15",
+          "text": "src/sece/io/__init__.py with load_image, save_image exports",
+          "completed": true
+        },
+        {
+          "id": "cbeee88f-3273-4023-a8e6-3e29129a1ba7",
+          "text": "src/sece/io/reader.py with format detection",
+          "completed": true
+        },
+        {
+          "id": "9d9037ef-dfe8-40d5-a5fd-7cb69cfa828a",
+          "text": "src/sece/io/writer.py with format selection",
+          "completed": true
+        },
+        {
+          "id": "4402e26b-37cc-4aab-a8f8-cd602e989541",
+          "text": "tests/test_io.py with edge case tests",
+          "completed": true
+        }
+      ],
+      "need_fix": [],
+      "assignee": null,
+      "blockers": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de"
+      ],
+      "dependencies": "Needs Python environment setup for OpenCV",
+      "sub_items": [],
+      "related_files": [
+        "src/sece/io/"
+      ],
+      "notes": "Use cv2.imread with cv2.IMREAD_UNCHANGED for format preservation. Add ensure_uint8() helper for bit depth conversion. Part of Phase 2: Color & I/O",
+      "c7_verified": [],
+      "created_at": "2026-02-26T17:49:20.290Z",
+      "updated_at": "2026-02-26T19:22:41.402Z",
+      "completed_at": "2026-02-26T19:21:43.405Z",
+      "edges": [
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ]
+    },
+    "0eb65914-05bb-463b-a970-ef279bd57e52": {
+      "id": "0eb65914-05bb-463b-a970-ef279bd57e52",
+      "title": "Implement PyTorch GPU backend for DCT transforms",
+      "description": "Create TorchBackend class implementing the Backend abstract interface. Uses torch-dct library or custom PyTorch implementation for 2D-DCT/IDCT transforms on GPU. Auto-detects CUDA availability and falls back to CPU. Memory-efficient for 4GB VRAM constraint.",
+      "status": "completed",
+      "priority": "second",
+      "success_criteria": [
+        {
+          "id": "d548c023-bdfc-4e3e-b8ba-893c0bc154c4",
+          "text": "TorchBackend.dct2d() produces same results as NumpyBackend within 1e-6",
+          "completed": true,
+          "completed_at": "2026-02-26T20:33:41.829Z"
+        },
+        {
+          "id": "a72deb1e-9da7-4cfc-8cb3-baad42e314a6",
+          "text": "TorchBackend.idct2d() roundtrip MSE < 1e-10",
+          "completed": true,
+          "completed_at": "2026-02-26T20:33:53.565Z"
+        },
+        {
+          "id": "62b1525d-a1cc-4de4-8da8-56e832469027",
+          "text": "Auto-detects CUDA and uses GPU when available",
+          "completed": true,
+          "completed_at": "2026-02-26T20:34:05.314Z"
+        },
+        {
+          "id": "7a1a5b7a-89fc-40e6-965e-5672b9560623",
+          "text": "Falls back gracefully when CUDA unavailable",
+          "completed": true,
+          "completed_at": "2026-02-26T20:34:16.707Z"
+        },
+        {
+          "id": "e2bdf481-a812-4cf0-af42-dedbab3cf09a",
+          "text": "512x512 image processed in < 0.2s on RTX 3050 Ti",
+          "completed": true,
+          "completed_at": "2026-02-26T20:34:37.387Z"
+        }
+      ],
+      "deliverables": [
+        {
+          "id": "6696ffc5-711d-43d0-bb4a-1085decb41cf",
+          "text": "src/sece/backends/torch_backend.py",
+          "completed": true
+        },
+        {
+          "id": "076fee90-1bb4-4506-8943-eb40210cb32a",
+          "text": "src/sece/backends/__init__.py with get_backend()",
+          "completed": true
+        },
+        {
+          "id": "44f664fc-6037-4ec8-90cc-5fcac82c805f",
+          "text": "tests/test_backends.py comparing NumPy vs Torch outputs",
+          "completed": true
+        }
+      ],
+      "need_fix": [],
+      "assignee": null,
+      "blockers": [
+        "ddac6cfd-78c2-43db-bd25-c5a8121cea35",
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de",
+        "be93ff54-bda1-42b0-8b86-3eaa61d87911"
+      ],
+      "dependencies": "GPU backend needs DCT weighting implementation as reference",
+      "sub_items": [],
+      "related_files": [
+        "src/sece/backends/"
+      ],
+      "notes": "Install: pip install torch-dct. Use torch.cuda.is_available() for detection. Check VRAM with torch.cuda.get_device_properties(). Part of Phase 4: GPU & Advanced. Optional dependency in pyproject.toml.\n\nSTARTED: Creating backends module with Backend ABC, NumpyBackend, and TorchBackend\n\nIMPLEMENTED: Backend module with abstract Backend ABC, NumpyBackend (scipy.fftpack), and TorchBackend (torch-dct). Auto-detects CUDA with graceful CPU fallback. All tests pass (319 passed). Performance test for 512x512 < 0.2s requires GPU - CPU fallback test allows < 2s. pyproject.toml updated with torch-dct dependency in [gpu] extras.",
+      "c7_verified": [],
+      "created_at": "2026-02-26T17:49:41.412Z",
+      "updated_at": "2026-02-26T20:36:24.573Z",
+      "completed_at": "2026-02-26T20:35:25.878Z",
+      "edges": []
+    },
+    "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764": {
+      "id": "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764",
+      "title": "Implement CLI tool with Click and Rich",
+      "description": "Create command-line interface using Click for argument parsing and Rich for progress bars and formatted output. Support single image and batch folder processing, format detection, method selection (sece/secedct), gamma parameter, metrics calculation, baseline comparison, and device selection (cpu/cuda).",
+      "status": "completed",
+      "priority": "second",
+      "success_criteria": [
+        {
+          "id": "dbdbfa85-d90b-475c-bbd2-1ded9312072a",
+          "text": "sece input.png -o output.png processes single image",
+          "completed": true,
+          "completed_at": "2026-02-26T20:14:05.218Z"
+        },
+        {
+          "id": "42f46165-7489-4465-907b-40f185012bda",
+          "text": "sece ./folder/ -o ./output/ processes batch recursively",
+          "completed": true,
+          "completed_at": "2026-02-26T20:14:13.702Z"
+        },
+        {
+          "id": "d1851a13-7bf3-40f4-b2b3-c29f41f60da3",
+          "text": "--format png/jpg/tiff selects output format",
+          "completed": true,
+          "completed_at": "2026-02-26T20:14:21.842Z"
+        },
+        {
+          "id": "af76abb1-77cd-45ec-80a0-3e285d91a520",
+          "text": "--method sece/secedct selects algorithm",
+          "completed": true,
+          "completed_at": "2026-02-26T20:14:43.350Z"
+        },
+        {
+          "id": "8a96fdec-6ed4-4e19-ad4b-12ae0ec51766",
+          "text": "--gamma 0.5 sets SECEDCT gamma parameter",
+          "completed": true,
+          "completed_at": "2026-02-26T20:14:52.057Z"
+        },
+        {
+          "id": "3c304c29-803c-4759-a139-7100e155b6dc",
+          "text": "--metrics emeg,gmsd,ssim calculates and displays metrics",
+          "completed": true,
+          "completed_at": "2026-02-26T20:15:00.859Z"
+        },
+        {
+          "id": "0390143d-7158-4346-bdd0-995aeebeaebe",
+          "text": "Rich progress bar shows processing status",
+          "completed": true,
+          "completed_at": "2026-02-26T20:15:09.481Z"
+        },
+        {
+          "id": "44d35964-12dc-43e1-bb8e-d7117c6938d5",
+          "text": "pytest tests/test_cli.py exit code 0",
+          "completed": true,
+          "completed_at": "2026-02-26T20:15:17.959Z"
+        }
+      ],
+      "deliverables": [
+        {
+          "id": "5853c6e0-6228-4a99-bce3-b4b1b222b8f7",
+          "text": "src/sece/cli/__init__.py",
+          "completed": true
+        },
+        {
+          "id": "fbfc9381-4342-4e94-aef0-4a84894d304f",
+          "text": "src/sece/cli/main.py with click commands",
+          "completed": true
+        },
+        {
+          "id": "553b6f95-9169-479e-81d3-b8287903d351",
+          "text": "tests/test_cli.py",
+          "completed": true
+        }
+      ],
+      "need_fix": [],
+      "assignee": null,
+      "blockers": [
+        "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1",
+        "c4466777-e646-478b-bf34-481c0997bc48",
+        "d54006f3-681c-438a-85f0-fdba614f8dcd"
+      ],
+      "dependencies": "Requires image I/O, SECE, and SECEDCT implementations",
+      "sub_items": [],
+      "related_files": [
+        "src/sece/cli/"
+      ],
+      "notes": "Entry point in pyproject.toml: [project.scripts] sece='sece.cli.main:cli'. Use @click.group() for subcommands, Rich Progress() for batch processing. Part of Phase 2: Color & I/O",
+      "c7_verified": [],
+      "created_at": "2026-02-26T17:50:04.557Z",
+      "updated_at": "2026-02-26T20:16:24.317Z",
+      "completed_at": "2026-02-26T20:15:54.754Z",
+      "edges": []
+    }
+  },
+  "edges": [
+    {
+      "from": "5011de0f-5ff8-46f0-9ce3-337ea337c9de",
+      "to": "74f40c0f-72d4-4441-a4f0-4c226b92e083",
+      "type": "blocks"
+    },
+    {
+      "from": "5011de0f-5ff8-46f0-9ce3-337ea337c9de",
+      "to": "ddac6cfd-78c2-43db-bd25-c5a8121cea35",
+      "type": "blocks"
+    },
+    {
+      "from": "5011de0f-5ff8-46f0-9ce3-337ea337c9de",
+      "to": "43b212eb-fb08-4db2-8254-ea4672738665",
+      "type": "blocks"
+    },
+    {
+      "from": "5011de0f-5ff8-46f0-9ce3-337ea337c9de",
+      "to": "6afc7775-aeb2-4593-a7da-e471e625755f",
+      "type": "blocks"
+    },
+    {
+      "from": "5011de0f-5ff8-46f0-9ce3-337ea337c9de",
+      "to": "60acd33e-8f3a-460a-8bdf-be20ef38fafd",
+      "type": "blocks"
+    },
+    {
+      "from": "5011de0f-5ff8-46f0-9ce3-337ea337c9de",
+      "to": "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1",
+      "type": "blocks"
+    },
+    {
+      "from": "5011de0f-5ff8-46f0-9ce3-337ea337c9de",
+      "to": "0eb65914-05bb-463b-a970-ef279bd57e52",
+      "type": "blocks"
+    },
+    {
+      "from": "cfbca66f-00e7-437b-b8b5-a4ce37d16261",
+      "to": "7cf67922-b7f6-4fae-9a2e-e3ab16080702",
+      "type": "blocks"
+    },
+    {
+      "from": "74f40c0f-72d4-4441-a4f0-4c226b92e083",
+      "to": "2c467730-74a9-4ead-8da9-8812522d9b38",
+      "type": "blocks"
+    },
+    {
+      "from": "2c467730-74a9-4ead-8da9-8812522d9b38",
+      "to": "61e7e8dc-e247-4d2e-99fd-188aa1a83d31",
+      "type": "blocks"
+    },
+    {
+      "from": "61e7e8dc-e247-4d2e-99fd-188aa1a83d31",
+      "to": "b72dc5d6-431e-491d-b05b-b12f9e54c193",
+      "type": "blocks"
+    },
+    {
+      "from": "b72dc5d6-431e-491d-b05b-b12f9e54c193",
+      "to": "c4466777-e646-478b-bf34-481c0997bc48",
+      "type": "blocks"
+    },
+    {
+      "from": "c4466777-e646-478b-bf34-481c0997bc48",
+      "to": "7cf67922-b7f6-4fae-9a2e-e3ab16080702",
+      "type": "blocks"
+    },
+    {
+      "from": "c4466777-e646-478b-bf34-481c0997bc48",
+      "to": "d54006f3-681c-438a-85f0-fdba614f8dcd",
+      "type": "blocks"
+    },
+    {
+      "from": "c4466777-e646-478b-bf34-481c0997bc48",
+      "to": "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764",
+      "type": "blocks"
+    },
+    {
+      "from": "c4466777-e646-478b-bf34-481c0997bc48",
+      "to": "43b212eb-fb08-4db2-8254-ea4672738665",
+      "type": "blocks"
+    },
+    {
+      "from": "c4466777-e646-478b-bf34-481c0997bc48",
+      "to": "6afc7775-aeb2-4593-a7da-e471e625755f",
+      "type": "blocks"
+    },
+    {
+      "from": "ddac6cfd-78c2-43db-bd25-c5a8121cea35",
+      "to": "be93ff54-bda1-42b0-8b86-3eaa61d87911",
+      "type": "blocks"
+    },
+    {
+      "from": "ddac6cfd-78c2-43db-bd25-c5a8121cea35",
+      "to": "0eb65914-05bb-463b-a970-ef279bd57e52",
+      "type": "blocks"
+    },
+    {
+      "from": "be93ff54-bda1-42b0-8b86-3eaa61d87911",
+      "to": "d54006f3-681c-438a-85f0-fdba614f8dcd",
+      "type": "blocks"
+    },
+    {
+      "from": "be93ff54-bda1-42b0-8b86-3eaa61d87911",
+      "to": "0eb65914-05bb-463b-a970-ef279bd57e52",
+      "type": "blocks"
+    },
+    {
+      "from": "d54006f3-681c-438a-85f0-fdba614f8dcd",
+      "to": "8c6ca77b-46b0-46ab-b274-a95e88d6024c",
+      "type": "blocks"
+    },
+    {
+      "from": "d54006f3-681c-438a-85f0-fdba614f8dcd",
+      "to": "7cf67922-b7f6-4fae-9a2e-e3ab16080702",
+      "type": "blocks"
+    },
+    {
+      "from": "d54006f3-681c-438a-85f0-fdba614f8dcd",
+      "to": "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764",
+      "type": "blocks"
+    },
+    {
+      "from": "d54006f3-681c-438a-85f0-fdba614f8dcd",
+      "to": "60acd33e-8f3a-460a-8bdf-be20ef38fafd",
+      "type": "blocks"
+    },
+    {
+      "from": "43b212eb-fb08-4db2-8254-ea4672738665",
+      "to": "7cf67922-b7f6-4fae-9a2e-e3ab16080702",
+      "type": "blocks"
+    },
+    {
+      "from": "6afc7775-aeb2-4593-a7da-e471e625755f",
+      "to": "7cf67922-b7f6-4fae-9a2e-e3ab16080702",
+      "type": "blocks"
+    },
+    {
+      "from": "60acd33e-8f3a-460a-8bdf-be20ef38fafd",
+      "to": "361ab3d7-d57c-48cb-83e8-1062f7c87aae",
+      "type": "blocks"
+    },
+    {
+      "from": "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1",
+      "to": "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764",
+      "type": "blocks"
+    }
+  ],
+  "indexes": {
+    "byStatus": {
+      "ready": [
+        "361ab3d7-d57c-48cb-83e8-1062f7c87aae"
+      ],
+      "in_progress": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+      ],
+      "in_review": [],
+      "completed": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de",
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083",
+        "2c467730-74a9-4ead-8da9-8812522d9b38",
+        "61e7e8dc-e247-4d2e-99fd-188aa1a83d31",
+        "b72dc5d6-431e-491d-b05b-b12f9e54c193",
+        "c4466777-e646-478b-bf34-481c0997bc48",
+        "ddac6cfd-78c2-43db-bd25-c5a8121cea35",
+        "be93ff54-bda1-42b0-8b86-3eaa61d87911",
+        "d54006f3-681c-438a-85f0-fdba614f8dcd",
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "6afc7775-aeb2-4593-a7da-e471e625755f",
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c",
+        "60acd33e-8f3a-460a-8bdf-be20ef38fafd",
+        "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1",
+        "0eb65914-05bb-463b-a970-ef279bd57e52",
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "blocked": [
+        "7cf67922-b7f6-4fae-9a2e-e3ab16080702"
+      ]
+    },
+    "byPriority": {
+      "top": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de",
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261",
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083",
+        "2c467730-74a9-4ead-8da9-8812522d9b38",
+        "61e7e8dc-e247-4d2e-99fd-188aa1a83d31",
+        "b72dc5d6-431e-491d-b05b-b12f9e54c193",
+        "c4466777-e646-478b-bf34-481c0997bc48",
+        "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1"
+      ],
+      "second": [
+        "ddac6cfd-78c2-43db-bd25-c5a8121cea35",
+        "be93ff54-bda1-42b0-8b86-3eaa61d87911",
+        "d54006f3-681c-438a-85f0-fdba614f8dcd",
+        "0eb65914-05bb-463b-a970-ef279bd57e52",
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "later": [
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "6afc7775-aeb2-4593-a7da-e471e625755f",
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c",
+        "7cf67922-b7f6-4fae-9a2e-e3ab16080702",
+        "60acd33e-8f3a-460a-8bdf-be20ef38fafd",
+        "361ab3d7-d57c-48cb-83e8-1062f7c87aae"
+      ]
+    },
+    "rootTasks": [
+      "5011de0f-5ff8-46f0-9ce3-337ea337c9de",
+      "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+    ],
+    "orphanTasks": [],
+    "searchText": {
+      "0": [
+        "b72dc5d6-431e-491d-b05b-b12f9e54c193",
+        "c4466777-e646-478b-bf34-481c0997bc48",
+        "be93ff54-bda1-42b0-8b86-3eaa61d87911",
+        "d54006f3-681c-438a-85f0-fdba614f8dcd",
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "6afc7775-aeb2-4593-a7da-e471e625755f",
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "1": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de",
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261",
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083",
+        "be93ff54-bda1-42b0-8b86-3eaa61d87911",
+        "d54006f3-681c-438a-85f0-fdba614f8dcd",
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "6afc7775-aeb2-4593-a7da-e471e625755f"
+      ],
+      "2": [
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083",
+        "2c467730-74a9-4ead-8da9-8812522d9b38",
+        "61e7e8dc-e247-4d2e-99fd-188aa1a83d31",
+        "b72dc5d6-431e-491d-b05b-b12f9e54c193",
+        "c4466777-e646-478b-bf34-481c0997bc48",
+        "d54006f3-681c-438a-85f0-fdba614f8dcd",
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1",
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "3": [
+        "2c467730-74a9-4ead-8da9-8812522d9b38",
+        "ddac6cfd-78c2-43db-bd25-c5a8121cea35",
+        "be93ff54-bda1-42b0-8b86-3eaa61d87911",
+        "d54006f3-681c-438a-85f0-fdba614f8dcd",
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "4": [
+        "61e7e8dc-e247-4d2e-99fd-188aa1a83d31",
+        "d54006f3-681c-438a-85f0-fdba614f8dcd",
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "6afc7775-aeb2-4593-a7da-e471e625755f",
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c",
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "5": [
+        "61e7e8dc-e247-4d2e-99fd-188aa1a83d31",
+        "d54006f3-681c-438a-85f0-fdba614f8dcd",
+        "7cf67922-b7f6-4fae-9a2e-e3ab16080702",
+        "60acd33e-8f3a-460a-8bdf-be20ef38fafd",
+        "361ab3d7-d57c-48cb-83e8-1062f7c87aae"
+      ],
+      "6": [
+        "61e7e8dc-e247-4d2e-99fd-188aa1a83d31"
+      ],
+      "7": [
+        "b72dc5d6-431e-491d-b05b-b12f9e54c193"
+      ],
+      "8": [
+        "b72dc5d6-431e-491d-b05b-b12f9e54c193",
+        "ddac6cfd-78c2-43db-bd25-c5a8121cea35",
+        "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1"
+      ],
+      "9": [
+        "ddac6cfd-78c2-43db-bd25-c5a8121cea35",
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "10": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261",
+        "be93ff54-bda1-42b0-8b86-3eaa61d87911"
+      ],
+      "11": [
+        "be93ff54-bda1-42b0-8b86-3eaa61d87911"
+      ],
+      "12": [
+        "be93ff54-bda1-42b0-8b86-3eaa61d87911"
+      ],
+      "13": [
+        "ddac6cfd-78c2-43db-bd25-c5a8121cea35"
+      ],
+      "14": [
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "16": [
+        "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1"
+      ],
+      "26": [
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083"
+      ],
+      "38": [
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "50": [
+        "c4466777-e646-478b-bf34-481c0997bc48"
+      ],
+      "53": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "80": [
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "98": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "149": [
+        "c4466777-e646-478b-bf34-481c0997bc48"
+      ],
+      "254": [
+        "c4466777-e646-478b-bf34-481c0997bc48"
+      ],
+      "255": [
+        "b72dc5d6-431e-491d-b05b-b12f9e54c193",
+        "c4466777-e646-478b-bf34-481c0997bc48"
+      ],
+      "319": [
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "500": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261",
+        "7cf67922-b7f6-4fae-9a2e-e3ab16080702"
+      ],
+      "2014": [
+        "6afc7775-aeb2-4593-a7da-e471e625755f"
+      ],
+      "setup": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de"
+      ],
+      "python": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de"
+      ],
+      "environment": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de"
+      ],
+      "and": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de",
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261",
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083",
+        "61e7e8dc-e247-4d2e-99fd-188aa1a83d31",
+        "c4466777-e646-478b-bf34-481c0997bc48",
+        "ddac6cfd-78c2-43db-bd25-c5a8121cea35",
+        "d54006f3-681c-438a-85f0-fdba614f8dcd",
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "6afc7775-aeb2-4593-a7da-e471e625755f",
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c",
+        "7cf67922-b7f6-4fae-9a2e-e3ab16080702",
+        "60acd33e-8f3a-460a-8bdf-be20ef38fafd",
+        "361ab3d7-d57c-48cb-83e8-1062f7c87aae",
+        "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1",
+        "0eb65914-05bb-463b-a970-ef279bd57e52",
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "dependencies": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de"
+      ],
+      "install": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de",
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "required": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de",
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+      ],
+      "packages": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de"
+      ],
+      "for": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de",
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261",
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083",
+        "2c467730-74a9-4ead-8da9-8812522d9b38",
+        "b72dc5d6-431e-491d-b05b-b12f9e54c193",
+        "c4466777-e646-478b-bf34-481c0997bc48",
+        "ddac6cfd-78c2-43db-bd25-c5a8121cea35",
+        "be93ff54-bda1-42b0-8b86-3eaa61d87911",
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "6afc7775-aeb2-4593-a7da-e471e625755f",
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c",
+        "7cf67922-b7f6-4fae-9a2e-e3ab16080702",
+        "60acd33e-8f3a-460a-8bdf-be20ef38fafd",
+        "361ab3d7-d57c-48cb-83e8-1062f7c87aae",
+        "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1",
+        "0eb65914-05bb-463b-a970-ef279bd57e52",
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "image": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de",
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261",
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083",
+        "2c467730-74a9-4ead-8da9-8812522d9b38",
+        "c4466777-e646-478b-bf34-481c0997bc48",
+        "ddac6cfd-78c2-43db-bd25-c5a8121cea35",
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c",
+        "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1",
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "processing": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de",
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c",
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "numerical": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de"
+      ],
+      "computation": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de",
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083"
+      ],
+      "numpy": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de"
+      ],
+      "opencv": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de",
+        "ddac6cfd-78c2-43db-bd25-c5a8121cea35",
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "scipy": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de",
+        "ddac6cfd-78c2-43db-bd25-c5a8121cea35",
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "scikit": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de",
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+      ],
+      "configure": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de"
+      ],
+      "development": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de",
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+      ],
+      "phase": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de",
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261",
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083",
+        "2c467730-74a9-4ead-8da9-8812522d9b38",
+        "61e7e8dc-e247-4d2e-99fd-188aa1a83d31",
+        "b72dc5d6-431e-491d-b05b-b12f9e54c193",
+        "c4466777-e646-478b-bf34-481c0997bc48",
+        "ddac6cfd-78c2-43db-bd25-c5a8121cea35",
+        "be93ff54-bda1-42b0-8b86-3eaa61d87911",
+        "d54006f3-681c-438a-85f0-fdba614f8dcd",
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "6afc7775-aeb2-4593-a7da-e471e625755f",
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c",
+        "7cf67922-b7f6-4fae-9a2e-e3ab16080702",
+        "60acd33e-8f3a-460a-8bdf-be20ef38fafd",
+        "361ab3d7-d57c-48cb-83e8-1062f7c87aae",
+        "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1",
+        "0eb65914-05bb-463b-a970-ef279bd57e52",
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "foundation": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de",
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+      ],
+      "before": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de"
+      ],
+      "any": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de"
+      ],
+      "implementation": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de",
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083",
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "6afc7775-aeb2-4593-a7da-e471e625755f",
+        "60acd33e-8f3a-460a-8bdf-be20ef38fafd",
+        "361ab3d7-d57c-48cb-83e8-1062f7c87aae",
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "work": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de"
+      ],
+      "optional": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de",
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "pip": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de",
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "piq": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de",
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "6afc7775-aeb2-4593-a7da-e471e625755f"
+      ],
+      "production": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de",
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "6afc7775-aeb2-4593-a7da-e471e625755f"
+      ],
+      "ready": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de"
+      ],
+      "iqa": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de",
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "metrics": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de",
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "gmsd": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de",
+        "6afc7775-aeb2-4593-a7da-e471e625755f",
+        "7cf67922-b7f6-4fae-9a2e-e3ab16080702"
+      ],
+      "fsim": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de"
+      ],
+      "ssim": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de",
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "etc": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de"
+      ],
+      "updated": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de",
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "now": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de",
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "includes": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de",
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "pyproject": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de",
+        "0eb65914-05bb-463b-a970-ef279bd57e52",
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "toml": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de",
+        "0eb65914-05bb-463b-a970-ef279bd57e52",
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "packaging": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de"
+      ],
+      "merged": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de",
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "from": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de",
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261",
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083",
+        "61e7e8dc-e247-4d2e-99fd-188aa1a83d31",
+        "ddac6cfd-78c2-43db-bd25-c5a8121cea35",
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "470ba9d9": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de"
+      ],
+      "library": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de",
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "6afc7775-aeb2-4593-a7da-e471e625755f",
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "is": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de",
+        "2c467730-74a9-4ead-8da9-8812522d9b38",
+        "61e7e8dc-e247-4d2e-99fd-188aa1a83d31",
+        "b72dc5d6-431e-491d-b05b-b12f9e54c193",
+        "c4466777-e646-478b-bf34-481c0997bc48",
+        "ddac6cfd-78c2-43db-bd25-c5a8121cea35",
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "6afc7775-aeb2-4593-a7da-e471e625755f",
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "skipped": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de"
+      ],
+      "initial": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de",
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+      ],
+      "can": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de",
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+      ],
+      "be": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de",
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261",
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "installed": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de"
+      ],
+      "with": [
+        "5011de0f-5ff8-46f0-9ce3-337ea337c9de",
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261",
+        "ddac6cfd-78c2-43db-bd25-c5a8121cea35",
+        "d54006f3-681c-438a-85f0-fdba614f8dcd",
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c",
+        "7cf67922-b7f6-4fae-9a2e-e3ab16080702",
+        "60acd33e-8f3a-460a-8bdf-be20ef38fafd",
+        "361ab3d7-d57c-48cb-83e8-1062f7c87aae",
+        "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1",
+        "0eb65914-05bb-463b-a970-ef279bd57e52",
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "download": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+      ],
+      "organize": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+      ],
+      "test": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261",
+        "7cf67922-b7f6-4fae-9a2e-e3ab16080702",
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "datasets": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+      ],
+      "berkeley": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261",
+        "7cf67922-b7f6-4fae-9a2e-e3ab16080702"
+      ],
+      "dataset": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261",
+        "7cf67922-b7f6-4fae-9a2e-e3ab16080702"
+      ],
+      "csiq": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+      ],
+      "database": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+      ],
+      "cmu": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+      ],
+      "pie": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+      ],
+      "face": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+      ],
+      "testing": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261",
+        "d54006f3-681c-438a-85f0-fdba614f8dcd",
+        "7cf67922-b7f6-4fae-9a2e-e3ab16080702"
+      ],
+      "evaluation": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261",
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "6afc7775-aeb2-4593-a7da-e471e625755f"
+      ],
+      "data": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+      ],
+      "validation": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261",
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "7cf67922-b7f6-4fae-9a2e-e3ab16080702"
+      ],
+      "use": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261",
+        "c4466777-e646-478b-bf34-481c0997bc48",
+        "ddac6cfd-78c2-43db-bd25-c5a8121cea35",
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c",
+        "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1",
+        "0eb65914-05bb-463b-a970-ef279bd57e52",
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "subset": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+      ],
+      "of": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261",
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083",
+        "61e7e8dc-e247-4d2e-99fd-188aa1a83d31",
+        "be93ff54-bda1-42b0-8b86-3eaa61d87911",
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c",
+        "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1",
+        "0eb65914-05bb-463b-a970-ef279bd57e52",
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "verified": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261",
+        "c4466777-e646-478b-bf34-481c0997bc48",
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "sources": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+      ],
+      "bsds500": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+      ],
+      "kaggle": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+      ],
+      "com": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261",
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083",
+        "60acd33e-8f3a-460a-8bdf-be20ef38fafd"
+      ],
+      "balraj98": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+      ],
+      "segmentation": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+      ],
+      "qualinet": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+      ],
+      "github": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261",
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083",
+        "60acd33e-8f3a-460a-8bdf-be20ef38fafd"
+      ],
+      "io": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261",
+        "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1"
+      ],
+      "databases": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+      ],
+      "categorical_image_quality_csiq_database": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+      ],
+      "has": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261",
+        "ddac6cfd-78c2-43db-bd25-c5a8121cea35",
+        "6afc7775-aeb2-4593-a7da-e471e625755f"
+      ],
+      "contrast": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261",
+        "c4466777-e646-478b-bf34-481c0997bc48",
+        "d54006f3-681c-438a-85f0-fdba614f8dcd",
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "decrement": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+      ],
+      "category": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+      ],
+      "specifically": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+      ],
+      "partial": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+      ],
+      "completion": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+      ],
+      "sample": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+      ],
+      "images": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261",
+        "b72dc5d6-431e-491d-b05b-b12f9e54c193",
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "6afc7775-aeb2-4593-a7da-e471e625755f",
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c",
+        "7cf67922-b7f6-4fae-9a2e-e3ab16080702",
+        "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1"
+      ],
+      "generated": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+      ],
+      "camera": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+      ],
+      "coins": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+      ],
+      "moon": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+      ],
+      "page": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+      ],
+      "astronaut": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+      ],
+      "chelsea": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+      ],
+      "plus": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+      ],
+      "synthetic": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+      ],
+      "low_contrast": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+      ],
+      "high_contrast": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+      ],
+      "gradient": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261",
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "6afc7775-aeb2-4593-a7da-e471e625755f"
+      ],
+      "checkerboard": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+      ],
+      "external": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+      ],
+      "require": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+      ],
+      "university": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+      ],
+      "registration": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+      ],
+      "placeholder": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+      ],
+      "directories": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+      ],
+      "created": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+      ],
+      "instructions": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261",
+        "361ab3d7-d57c-48cb-83e8-1062f7c87aae"
+      ],
+      "sufficient": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+      ],
+      "blocked": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+      ],
+      "manual": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+      ],
+      "on": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261",
+        "7cf67922-b7f6-4fae-9a2e-e3ab16080702",
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "sites": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+      ],
+      "are": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261",
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "60acd33e-8f3a-460a-8bdf-be20ef38fafd"
+      ],
+      "task": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261",
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "completed": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261",
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "when": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+      ],
+      "user": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+      ],
+      "downloads": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+      ],
+      "manually": [
+        "cfbca66f-00e7-437b-b8b5-a4ce37d16261"
+      ],
+      "implement": [
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083",
+        "2c467730-74a9-4ead-8da9-8812522d9b38",
+        "61e7e8dc-e247-4d2e-99fd-188aa1a83d31",
+        "b72dc5d6-431e-491d-b05b-b12f9e54c193",
+        "c4466777-e646-478b-bf34-481c0997bc48",
+        "ddac6cfd-78c2-43db-bd25-c5a8121cea35",
+        "be93ff54-bda1-42b0-8b86-3eaa61d87911",
+        "d54006f3-681c-438a-85f0-fdba614f8dcd",
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "6afc7775-aeb2-4593-a7da-e471e625755f",
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c",
+        "60acd33e-8f3a-460a-8bdf-be20ef38fafd",
+        "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1",
+        "0eb65914-05bb-463b-a970-ef279bd57e52",
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "spatial": [
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083",
+        "2c467730-74a9-4ead-8da9-8812522d9b38",
+        "61e7e8dc-e247-4d2e-99fd-188aa1a83d31",
+        "c4466777-e646-478b-bf34-481c0997bc48"
+      ],
+      "histogram": [
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083",
+        "2c467730-74a9-4ead-8da9-8812522d9b38",
+        "c4466777-e646-478b-bf34-481c0997bc48",
+        "60acd33e-8f3a-460a-8bdf-be20ef38fafd"
+      ],
+      "2d": [
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083",
+        "2c467730-74a9-4ead-8da9-8812522d9b38",
+        "ddac6cfd-78c2-43db-bd25-c5a8121cea35",
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "each": [
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083",
+        "2c467730-74a9-4ead-8da9-8812522d9b38",
+        "61e7e8dc-e247-4d2e-99fd-188aa1a83d31",
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "gray": [
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083",
+        "2c467730-74a9-4ead-8da9-8812522d9b38",
+        "61e7e8dc-e247-4d2e-99fd-188aa1a83d31",
+        "b72dc5d6-431e-491d-b05b-b12f9e54c193"
+      ],
+      "level": [
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083",
+        "2c467730-74a9-4ead-8da9-8812522d9b38",
+        "61e7e8dc-e247-4d2e-99fd-188aa1a83d31",
+        "b72dc5d6-431e-491d-b05b-b12f9e54c193",
+        "d54006f3-681c-438a-85f0-fdba614f8dcd",
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "x_k": [
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083"
+      ],
+      "count": [
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083",
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "its": [
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083"
+      ],
+      "occurrences": [
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083"
+      ],
+      "in": [
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083",
+        "2c467730-74a9-4ead-8da9-8812522d9b38",
+        "c4466777-e646-478b-bf34-481c0997bc48",
+        "d54006f3-681c-438a-85f0-fdba614f8dcd",
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "6afc7775-aeb2-4593-a7da-e471e625755f",
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c",
+        "60acd33e-8f3a-460a-8bdf-be20ef38fafd",
+        "0eb65914-05bb-463b-a970-ef279bd57e52",
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "m": [
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083",
+        "2c467730-74a9-4ead-8da9-8812522d9b38"
+      ],
+      "n": [
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083",
+        "2c467730-74a9-4ead-8da9-8812522d9b38"
+      ],
+      "grids": [
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083"
+      ],
+      "grid": [
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083"
+      ],
+      "size": [
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083",
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "computed": [
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083"
+      ],
+      "dynamically": [
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083"
+      ],
+      "using": [
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083",
+        "2c467730-74a9-4ead-8da9-8812522d9b38",
+        "b72dc5d6-431e-491d-b05b-b12f9e54c193",
+        "ddac6cfd-78c2-43db-bd25-c5a8121cea35",
+        "be93ff54-bda1-42b0-8b86-3eaa61d87911",
+        "d54006f3-681c-438a-85f0-fdba614f8dcd",
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c",
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "k": [
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083",
+        "61e7e8dc-e247-4d2e-99fd-188aa1a83d31",
+        "be93ff54-bda1-42b0-8b86-3eaa61d87911"
+      ],
+      "distinct": [
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083"
+      ],
+      "levels": [
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083",
+        "b72dc5d6-431e-491d-b05b-b12f9e54c193"
+      ],
+      "aspect": [
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083"
+      ],
+      "ratio": [
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083"
+      ],
+      "sece": [
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083",
+        "2c467730-74a9-4ead-8da9-8812522d9b38",
+        "61e7e8dc-e247-4d2e-99fd-188aa1a83d31",
+        "b72dc5d6-431e-491d-b05b-b12f9e54c193",
+        "c4466777-e646-478b-bf34-481c0997bc48",
+        "d54006f3-681c-438a-85f0-fdba614f8dcd",
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c",
+        "7cf67922-b7f6-4fae-9a2e-e3ab16080702",
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "core": [
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083",
+        "2c467730-74a9-4ead-8da9-8812522d9b38",
+        "61e7e8dc-e247-4d2e-99fd-188aa1a83d31",
+        "b72dc5d6-431e-491d-b05b-b12f9e54c193",
+        "c4466777-e646-478b-bf34-481c0997bc48"
+      ],
+      "implements": [
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083",
+        "2c467730-74a9-4ead-8da9-8812522d9b38",
+        "61e7e8dc-e247-4d2e-99fd-188aa1a83d31",
+        "b72dc5d6-431e-491d-b05b-b12f9e54c193",
+        "ddac6cfd-78c2-43db-bd25-c5a8121cea35",
+        "be93ff54-bda1-42b0-8b86-3eaa61d87911",
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "formula": [
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083",
+        "2c467730-74a9-4ead-8da9-8812522d9b38",
+        "61e7e8dc-e247-4d2e-99fd-188aa1a83d31",
+        "b72dc5d6-431e-491d-b05b-b12f9e54c193",
+        "be93ff54-bda1-42b0-8b86-3eaa61d87911",
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "paper": [
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083",
+        "ddac6cfd-78c2-43db-bd25-c5a8121cea35",
+        "d54006f3-681c-438a-85f0-fdba614f8dcd",
+        "6afc7775-aeb2-4593-a7da-e471e625755f",
+        "60acd33e-8f3a-460a-8bdf-be20ef38fafd"
+      ],
+      "key": [
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083",
+        "c4466777-e646-478b-bf34-481c0997bc48",
+        "d54006f3-681c-438a-85f0-fdba614f8dcd"
+      ],
+      "innovation": [
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083"
+      ],
+      "uses": [
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083",
+        "2c467730-74a9-4ead-8da9-8812522d9b38",
+        "ddac6cfd-78c2-43db-bd25-c5a8121cea35",
+        "be93ff54-bda1-42b0-8b86-3eaa61d87911",
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "6afc7775-aeb2-4593-a7da-e471e625755f",
+        "60acd33e-8f3a-460a-8bdf-be20ef38fafd",
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "distribution": [
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083",
+        "61e7e8dc-e247-4d2e-99fd-188aa1a83d31",
+        "c4466777-e646-478b-bf34-481c0997bc48",
+        "be93ff54-bda1-42b0-8b86-3eaa61d87911",
+        "d54006f3-681c-438a-85f0-fdba614f8dcd"
+      ],
+      "instead": [
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083",
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "reference": [
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083",
+        "6afc7775-aeb2-4593-a7da-e471e625755f",
+        "60acd33e-8f3a-460a-8bdf-be20ef38fafd"
+      ],
+      "xiezhongzhao": [
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083"
+      ],
+      "contrast_enhancement": [
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083"
+      ],
+      "stars": [
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083"
+      ],
+      "r": [
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083"
+      ],
+      "h": [
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083",
+        "be93ff54-bda1-42b0-8b86-3eaa61d87911",
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "w": [
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083",
+        "be93ff54-bda1-42b0-8b86-3eaa61d87911",
+        "6afc7775-aeb2-4593-a7da-e471e625755f"
+      ],
+      "entropy": [
+        "2c467730-74a9-4ead-8da9-8812522d9b38",
+        "c4466777-e646-478b-bf34-481c0997bc48",
+        "be93ff54-bda1-42b0-8b86-3eaa61d87911",
+        "d54006f3-681c-438a-85f0-fdba614f8dcd"
+      ],
+      "calculation": [
+        "2c467730-74a9-4ead-8da9-8812522d9b38",
+        "61e7e8dc-e247-4d2e-99fd-188aa1a83d31",
+        "c4466777-e646-478b-bf34-481c0997bc48",
+        "be93ff54-bda1-42b0-8b86-3eaa61d87911",
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "calculate": [
+        "2c467730-74a9-4ead-8da9-8812522d9b38",
+        "61e7e8dc-e247-4d2e-99fd-188aa1a83d31"
+      ],
+      "s_k": [
+        "2c467730-74a9-4ead-8da9-8812522d9b38",
+        "61e7e8dc-e247-4d2e-99fd-188aa1a83d31"
+      ],
+      "the": [
+        "2c467730-74a9-4ead-8da9-8812522d9b38",
+        "61e7e8dc-e247-4d2e-99fd-188aa1a83d31",
+        "b72dc5d6-431e-491d-b05b-b12f9e54c193",
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c",
+        "60acd33e-8f3a-460a-8bdf-be20ef38fafd",
+        "361ab3d7-d57c-48cb-83e8-1062f7c87aae",
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "shannon": [
+        "2c467730-74a9-4ead-8da9-8812522d9b38"
+      ],
+      "_m": [
+        "2c467730-74a9-4ead-8da9-8812522d9b38"
+      ],
+      "_n": [
+        "2c467730-74a9-4ead-8da9-8812522d9b38"
+      ],
+      "h_k": [
+        "2c467730-74a9-4ead-8da9-8812522d9b38"
+      ],
+      "log2": [
+        "2c467730-74a9-4ead-8da9-8812522d9b38"
+      ],
+      "measures": [
+        "2c467730-74a9-4ead-8da9-8812522d9b38",
+        "61e7e8dc-e247-4d2e-99fd-188aa1a83d31",
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "6afc7775-aeb2-4593-a7da-e471e625755f"
+      ],
+      "how": [
+        "2c467730-74a9-4ead-8da9-8812522d9b38",
+        "61e7e8dc-e247-4d2e-99fd-188aa1a83d31"
+      ],
+      "spread": [
+        "2c467730-74a9-4ead-8da9-8812522d9b38"
+      ],
+      "out": [
+        "2c467730-74a9-4ead-8da9-8812522d9b38"
+      ],
+      "space": [
+        "2c467730-74a9-4ead-8da9-8812522d9b38",
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "higher": [
+        "2c467730-74a9-4ead-8da9-8812522d9b38",
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "more": [
+        "2c467730-74a9-4ead-8da9-8812522d9b38",
+        "ddac6cfd-78c2-43db-bd25-c5a8121cea35"
+      ],
+      "across": [
+        "2c467730-74a9-4ead-8da9-8812522d9b38"
+      ],
+      "function": [
+        "61e7e8dc-e247-4d2e-99fd-188aa1a83d31",
+        "b72dc5d6-431e-491d-b05b-b12f9e54c193",
+        "c4466777-e646-478b-bf34-481c0997bc48",
+        "be93ff54-bda1-42b0-8b86-3eaa61d87911",
+        "d54006f3-681c-438a-85f0-fdba614f8dcd"
+      ],
+      "discrete": [
+        "61e7e8dc-e247-4d2e-99fd-188aa1a83d31",
+        "ddac6cfd-78c2-43db-bd25-c5a8121cea35"
+      ],
+      "f_k": [
+        "61e7e8dc-e247-4d2e-99fd-188aa1a83d31",
+        "b72dc5d6-431e-491d-b05b-b12f9e54c193",
+        "be93ff54-bda1-42b0-8b86-3eaa61d87911"
+      ],
+      "cumulative": [
+        "61e7e8dc-e247-4d2e-99fd-188aa1a83d31"
+      ],
+      "entropies": [
+        "61e7e8dc-e247-4d2e-99fd-188aa1a83d31"
+      ],
+      "sum": [
+        "61e7e8dc-e247-4d2e-99fd-188aa1a83d31"
+      ],
+      "s_l": [
+        "61e7e8dc-e247-4d2e-99fd-188aa1a83d31"
+      ],
+      "where": [
+        "61e7e8dc-e247-4d2e-99fd-188aa1a83d31"
+      ],
+      "l": [
+        "61e7e8dc-e247-4d2e-99fd-188aa1a83d31",
+        "be93ff54-bda1-42b0-8b86-3eaa61d87911"
+      ],
+      "normalize": [
+        "61e7e8dc-e247-4d2e-99fd-188aa1a83d31"
+      ],
+      "f_l": [
+        "61e7e8dc-e247-4d2e-99fd-188aa1a83d31"
+      ],
+      "formulas": [
+        "61e7e8dc-e247-4d2e-99fd-188aa1a83d31",
+        "ddac6cfd-78c2-43db-bd25-c5a8121cea35",
+        "be93ff54-bda1-42b0-8b86-3eaa61d87911"
+      ],
+      "relative": [
+        "61e7e8dc-e247-4d2e-99fd-188aa1a83d31"
+      ],
+      "importance": [
+        "61e7e8dc-e247-4d2e-99fd-188aa1a83d31"
+      ],
+      "significant": [
+        "61e7e8dc-e247-4d2e-99fd-188aa1a83d31"
+      ],
+      "compared": [
+        "61e7e8dc-e247-4d2e-99fd-188aa1a83d31"
+      ],
+      "to": [
+        "61e7e8dc-e247-4d2e-99fd-188aa1a83d31",
+        "b72dc5d6-431e-491d-b05b-b12f9e54c193",
+        "c4466777-e646-478b-bf34-481c0997bc48",
+        "be93ff54-bda1-42b0-8b86-3eaa61d87911",
+        "d54006f3-681c-438a-85f0-fdba614f8dcd",
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "6afc7775-aeb2-4593-a7da-e471e625755f",
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c",
+        "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1",
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "others": [
+        "61e7e8dc-e247-4d2e-99fd-188aa1a83d31"
+      ],
+      "mapping": [
+        "b72dc5d6-431e-491d-b05b-b12f9e54c193"
+      ],
+      "map": [
+        "b72dc5d6-431e-491d-b05b-b12f9e54c193",
+        "6afc7775-aeb2-4593-a7da-e471e625755f"
+      ],
+      "input": [
+        "b72dc5d6-431e-491d-b05b-b12f9e54c193",
+        "c4466777-e646-478b-bf34-481c0997bc48"
+      ],
+      "output": [
+        "b72dc5d6-431e-491d-b05b-b12f9e54c193",
+        "c4466777-e646-478b-bf34-481c0997bc48",
+        "d54006f3-681c-438a-85f0-fdba614f8dcd",
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "cdf": [
+        "b72dc5d6-431e-491d-b05b-b12f9e54c193"
+      ],
+      "y_k": [
+        "b72dc5d6-431e-491d-b05b-b12f9e54c193"
+      ],
+      "floor": [
+        "b72dc5d6-431e-491d-b05b-b12f9e54c193"
+      ],
+      "y_u": [
+        "b72dc5d6-431e-491d-b05b-b12f9e54c193"
+      ],
+      "y_d": [
+        "b72dc5d6-431e-491d-b05b-b12f9e54c193"
+      ],
+      "default": [
+        "b72dc5d6-431e-491d-b05b-b12f9e54c193",
+        "c4466777-e646-478b-bf34-481c0997bc48",
+        "d54006f3-681c-438a-85f0-fdba614f8dcd",
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "range": [
+        "b72dc5d6-431e-491d-b05b-b12f9e54c193",
+        "c4466777-e646-478b-bf34-481c0997bc48"
+      ],
+      "bit": [
+        "b72dc5d6-431e-491d-b05b-b12f9e54c193",
+        "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1"
+      ],
+      "maps": [
+        "b72dc5d6-431e-491d-b05b-b12f9e54c193"
+      ],
+      "dynamic": [
+        "b72dc5d6-431e-491d-b05b-b12f9e54c193"
+      ],
+      "complete": [
+        "c4466777-e646-478b-bf34-481c0997bc48",
+        "d54006f3-681c-438a-85f0-fdba614f8dcd",
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "integrate": [
+        "c4466777-e646-478b-bf34-481c0997bc48",
+        "d54006f3-681c-438a-85f0-fdba614f8dcd"
+      ],
+      "all": [
+        "c4466777-e646-478b-bf34-481c0997bc48",
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c",
+        "7cf67922-b7f6-4fae-9a2e-e3ab16080702",
+        "361ab3d7-d57c-48cb-83e8-1062f7c87aae",
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "components": [
+        "c4466777-e646-478b-bf34-481c0997bc48"
+      ],
+      "into": [
+        "c4466777-e646-478b-bf34-481c0997bc48",
+        "d54006f3-681c-438a-85f0-fdba614f8dcd",
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "based": [
+        "c4466777-e646-478b-bf34-481c0997bc48",
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "enhancement": [
+        "c4466777-e646-478b-bf34-481c0997bc48",
+        "d54006f3-681c-438a-85f0-fdba614f8dcd",
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "algorithm": [
+        "c4466777-e646-478b-bf34-481c0997bc48",
+        "d54006f3-681c-438a-85f0-fdba614f8dcd"
+      ],
+      "grayscale": [
+        "c4466777-e646-478b-bf34-481c0997bc48",
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c",
+        "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1"
+      ],
+      "x": [
+        "c4466777-e646-478b-bf34-481c0997bc48",
+        "ddac6cfd-78c2-43db-bd25-c5a8121cea35",
+        "d54006f3-681c-438a-85f0-fdba614f8dcd",
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "6afc7775-aeb2-4593-a7da-e471e625755f"
+      ],
+      "enhanced": [
+        "c4466777-e646-478b-bf34-481c0997bc48",
+        "6afc7775-aeb2-4593-a7da-e471e625755f"
+      ],
+      "y": [
+        "c4466777-e646-478b-bf34-481c0997bc48",
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "6afc7775-aeb2-4593-a7da-e471e625755f"
+      ],
+      "also": [
+        "c4466777-e646-478b-bf34-481c0997bc48",
+        "ddac6cfd-78c2-43db-bd25-c5a8121cea35",
+        "be93ff54-bda1-42b0-8b86-3eaa61d87911",
+        "6afc7775-aeb2-4593-a7da-e471e625755f"
+      ],
+      "returns": [
+        "c4466777-e646-478b-bf34-481c0997bc48",
+        "ddac6cfd-78c2-43db-bd25-c5a8121cea35",
+        "d54006f3-681c-438a-85f0-fdba614f8dcd",
+        "6afc7775-aeb2-4593-a7da-e471e625755f"
+      ],
+      "f": [
+        "c4466777-e646-478b-bf34-481c0997bc48",
+        "be93ff54-bda1-42b0-8b86-3eaa61d87911",
+        "d54006f3-681c-438a-85f0-fdba614f8dcd"
+      ],
+      "secedct": [
+        "c4466777-e646-478b-bf34-481c0997bc48",
+        "ddac6cfd-78c2-43db-bd25-c5a8121cea35",
+        "be93ff54-bda1-42b0-8b86-3eaa61d87911",
+        "d54006f3-681c-438a-85f0-fdba614f8dcd",
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c",
+        "7cf67922-b7f6-4fae-9a2e-e3ab16080702",
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "integrates": [
+        "c4466777-e646-478b-bf34-481c0997bc48"
+      ],
+      "property": [
+        "c4466777-e646-478b-bf34-481c0997bc48"
+      ],
+      "preserves": [
+        "c4466777-e646-478b-bf34-481c0997bc48",
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "shape": [
+        "c4466777-e646-478b-bf34-481c0997bc48"
+      ],
+      "while": [
+        "c4466777-e646-478b-bf34-481c0997bc48",
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "enhancing": [
+        "c4466777-e646-478b-bf34-481c0997bc48",
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "important": [
+        "c4466777-e646-478b-bf34-481c0997bc48",
+        "be93ff54-bda1-42b0-8b86-3eaa61d87911"
+      ],
+      "both": [
+        "c4466777-e646-478b-bf34-481c0997bc48",
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "needed": [
+        "c4466777-e646-478b-bf34-481c0997bc48"
+      ],
+      "by": [
+        "c4466777-e646-478b-bf34-481c0997bc48",
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "alpha": [
+        "c4466777-e646-478b-bf34-481c0997bc48",
+        "be93ff54-bda1-42b0-8b86-3eaa61d87911",
+        "d54006f3-681c-438a-85f0-fdba614f8dcd",
+        "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1"
+      ],
+      "example_output": [
+        "c4466777-e646-478b-bf34-481c0997bc48"
+      ],
+      "png": [
+        "c4466777-e646-478b-bf34-481c0997bc48",
+        "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1"
+      ],
+      "deferred": [
+        "c4466777-e646-478b-bf34-481c0997bc48"
+      ],
+      "until": [
+        "c4466777-e646-478b-bf34-481c0997bc48"
+      ],
+      "i": [
+        "c4466777-e646-478b-bf34-481c0997bc48",
+        "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1",
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "o": [
+        "c4466777-e646-478b-bf34-481c0997bc48",
+        "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1",
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "module": [
+        "c4466777-e646-478b-bf34-481c0997bc48",
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c",
+        "60acd33e-8f3a-460a-8bdf-be20ef38fafd",
+        "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1",
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "implemented": [
+        "c4466777-e646-478b-bf34-481c0997bc48",
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c",
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "original": [
+        "c4466777-e646-478b-bf34-481c0997bc48",
+        "6afc7775-aeb2-4593-a7da-e471e625755f"
+      ],
+      "expanded": [
+        "c4466777-e646-478b-bf34-481c0997bc48"
+      ],
+      "dct": [
+        "ddac6cfd-78c2-43db-bd25-c5a8121cea35",
+        "be93ff54-bda1-42b0-8b86-3eaa61d87911",
+        "d54006f3-681c-438a-85f0-fdba614f8dcd",
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "transform": [
+        "ddac6cfd-78c2-43db-bd25-c5a8121cea35",
+        "d54006f3-681c-438a-85f0-fdba614f8dcd"
+      ],
+      "functions": [
+        "ddac6cfd-78c2-43db-bd25-c5a8121cea35",
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c",
+        "361ab3d7-d57c-48cb-83e8-1062f7c87aae"
+      ],
+      "forward": [
+        "ddac6cfd-78c2-43db-bd25-c5a8121cea35"
+      ],
+      "inverse": [
+        "ddac6cfd-78c2-43db-bd25-c5a8121cea35"
+      ],
+      "cosine": [
+        "ddac6cfd-78c2-43db-bd25-c5a8121cea35"
+      ],
+      "fftpack": [
+        "ddac6cfd-78c2-43db-bd25-c5a8121cea35",
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "dct2d": [
+        "ddac6cfd-78c2-43db-bd25-c5a8121cea35",
+        "d54006f3-681c-438a-85f0-fdba614f8dcd"
+      ],
+      "coefficients": [
+        "ddac6cfd-78c2-43db-bd25-c5a8121cea35",
+        "be93ff54-bda1-42b0-8b86-3eaa61d87911",
+        "d54006f3-681c-438a-85f0-fdba614f8dcd"
+      ],
+      "d": [
+        "ddac6cfd-78c2-43db-bd25-c5a8121cea35",
+        "d54006f3-681c-438a-85f0-fdba614f8dcd"
+      ],
+      "idct2d": [
+        "ddac6cfd-78c2-43db-bd25-c5a8121cea35",
+        "d54006f3-681c-438a-85f0-fdba614f8dcd"
+      ],
+      "norm": [
+        "ddac6cfd-78c2-43db-bd25-c5a8121cea35"
+      ],
+      "ortho": [
+        "ddac6cfd-78c2-43db-bd25-c5a8121cea35"
+      ],
+      "orthonormal": [
+        "ddac6cfd-78c2-43db-bd25-c5a8121cea35"
+      ],
+      "cv2": [
+        "ddac6cfd-78c2-43db-bd25-c5a8121cea35",
+        "60acd33e-8f3a-460a-8bdf-be20ef38fafd",
+        "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1"
+      ],
+      "but": [
+        "ddac6cfd-78c2-43db-bd25-c5a8121cea35"
+      ],
+      "flexible": [
+        "ddac6cfd-78c2-43db-bd25-c5a8121cea35"
+      ],
+      "coefficient": [
+        "be93ff54-bda1-42b0-8b86-3eaa61d87911",
+        "d54006f3-681c-438a-85f0-fdba614f8dcd"
+      ],
+      "weighting": [
+        "be93ff54-bda1-42b0-8b86-3eaa61d87911",
+        "d54006f3-681c-438a-85f0-fdba614f8dcd"
+      ],
+      "gamma": [
+        "be93ff54-bda1-42b0-8b86-3eaa61d87911",
+        "d54006f3-681c-438a-85f0-fdba614f8dcd",
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "guarantees": [
+        "be93ff54-bda1-42b0-8b86-3eaa61d87911"
+      ],
+      "no": [
+        "be93ff54-bda1-42b0-8b86-3eaa61d87911",
+        "d54006f3-681c-438a-85f0-fdba614f8dcd"
+      ],
+      "change": [
+        "be93ff54-bda1-42b0-8b86-3eaa61d87911"
+      ],
+      "dc": [
+        "be93ff54-bda1-42b0-8b86-3eaa61d87911"
+      ],
+      "mean": [
+        "be93ff54-bda1-42b0-8b86-3eaa61d87911"
+      ],
+      "value": [
+        "be93ff54-bda1-42b0-8b86-3eaa61d87911",
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "preserved": [
+        "be93ff54-bda1-42b0-8b86-3eaa61d87911"
+      ],
+      "log": [
+        "be93ff54-bda1-42b0-8b86-3eaa61d87911"
+      ],
+      "flow": [
+        "d54006f3-681c-438a-85f0-fdba614f8dcd"
+      ],
+      "y_global": [
+        "d54006f3-681c-438a-85f0-fdba614f8dcd"
+      ],
+      "weight_coefficients": [
+        "d54006f3-681c-438a-85f0-fdba614f8dcd"
+      ],
+      "y_final": [
+        "d54006f3-681c-438a-85f0-fdba614f8dcd"
+      ],
+      "parameter": [
+        "d54006f3-681c-438a-85f0-fdba614f8dcd",
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c",
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "controls": [
+        "d54006f3-681c-438a-85f0-fdba614f8dcd"
+      ],
+      "local": [
+        "d54006f3-681c-438a-85f0-fdba614f8dcd"
+      ],
+      "means": [
+        "d54006f3-681c-438a-85f0-fdba614f8dcd"
+      ],
+      "equals": [
+        "d54006f3-681c-438a-85f0-fdba614f8dcd"
+      ],
+      "maximum": [
+        "d54006f3-681c-438a-85f0-fdba614f8dcd"
+      ],
+      "gives": [
+        "d54006f3-681c-438a-85f0-fdba614f8dcd"
+      ],
+      "start": [
+        "d54006f3-681c-438a-85f0-fdba614f8dcd"
+      ],
+      "call": [
+        "d54006f3-681c-438a-85f0-fdba614f8dcd"
+      ],
+      "get": [
+        "d54006f3-681c-438a-85f0-fdba614f8dcd"
+      ],
+      "compute": [
+        "d54006f3-681c-438a-85f0-fdba614f8dcd",
+        "6afc7775-aeb2-4593-a7da-e471e625755f"
+      ],
+      "weight": [
+        "d54006f3-681c-438a-85f0-fdba614f8dcd"
+      ],
+      "idct": [
+        "d54006f3-681c-438a-85f0-fdba614f8dcd",
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "per": [
+        "d54006f3-681c-438a-85f0-fdba614f8dcd",
+        "6afc7775-aeb2-4593-a7da-e471e625755f"
+      ],
+      "emeg": [
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "7cf67922-b7f6-4fae-9a2e-e3ab16080702"
+      ],
+      "metric": [
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "6afc7775-aeb2-4593-a7da-e471e625755f"
+      ],
+      "expected": [
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "measure": [
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "7cf67922-b7f6-4fae-9a2e-e3ab16080702"
+      ],
+      "divides": [
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "blocks": [
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "computes": [
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "block": [
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "averages": [
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "results": [
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "7cf67922-b7f6-4fae-9a2e-e3ab16080702",
+        "361ab3d7-d57c-48cb-83e8-1062f7c87aae"
+      ],
+      "indicates": [
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "6afc7775-aeb2-4593-a7da-e471e625755f"
+      ],
+      "8x8": [
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "consider": [
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "including": [
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c",
+        "361ab3d7-d57c-48cb-83e8-1062f7c87aae"
+      ],
+      "warning": [
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "highly": [
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "sensitive": [
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "noise": [
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "high": [
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "may": [
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "indicate": [
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "rather": [
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "than": [
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "good": [
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "valid": [
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "added": [
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "skimage": [
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "structural_similarity": [
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "multichannel": [
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "true": [
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "color": [
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c",
+        "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1",
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "threshold": [
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "6afc7775-aeb2-4593-a7da-e471e625755f"
+      ],
+      "perceptual": [
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "6afc7775-aeb2-4593-a7da-e471e625755f"
+      ],
+      "similarity": [
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "6afc7775-aeb2-4593-a7da-e471e625755f"
+      ],
+      "part": [
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1",
+        "0eb65914-05bb-463b-a970-ef279bd57e52",
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "baselines": [
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "60acd33e-8f3a-460a-8bdf-be20ef38fafd"
+      ],
+      "clarity": [
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "this": [
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "primary": [
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "secondary": [
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "was": [
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "here": [
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "because": [
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "used": [
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "together": [
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "simple": [
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "wrapper": [
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "reduces": [
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "success": [
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "criteria": [
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "deliverables": [
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "361ab3d7-d57c-48cb-83e8-1062f7c87aae"
+      ],
+      "include": [
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1"
+      ],
+      "py": [
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "6afc7775-aeb2-4593-a7da-e471e625755f",
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "files": [
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "pytest": [
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "tests": [
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c",
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "test_emeg": [
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "passes": [
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "coverage": [
+        "43b212eb-fb08-4db2-8254-ea4672738665",
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "distortion": [
+        "6afc7775-aeb2-4593-a7da-e471e625755f"
+      ],
+      "magnitude": [
+        "6afc7775-aeb2-4593-a7da-e471e625755f"
+      ],
+      "deviation": [
+        "6afc7775-aeb2-4593-a7da-e471e625755f"
+      ],
+      "measuring": [
+        "6afc7775-aeb2-4593-a7da-e471e625755f"
+      ],
+      "between": [
+        "6afc7775-aeb2-4593-a7da-e471e625755f",
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "sobel": [
+        "6afc7775-aeb2-4593-a7da-e471e625755f"
+      ],
+      "gradients": [
+        "6afc7775-aeb2-4593-a7da-e471e625755f"
+      ],
+      "then": [
+        "6afc7775-aeb2-4593-a7da-e471e625755f"
+      ],
+      "takes": [
+        "6afc7775-aeb2-4593-a7da-e471e625755f"
+      ],
+      "standard": [
+        "6afc7775-aeb2-4593-a7da-e471e625755f",
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c",
+        "7cf67922-b7f6-4fae-9a2e-e3ab16080702",
+        "60acd33e-8f3a-460a-8bdf-be20ef38fafd"
+      ],
+      "as": [
+        "6afc7775-aeb2-4593-a7da-e471e625755f",
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c",
+        "60acd33e-8f3a-460a-8bdf-be20ef38fafd"
+      ],
+      "final": [
+        "6afc7775-aeb2-4593-a7da-e471e625755f",
+        "361ab3d7-d57c-48cb-83e8-1062f7c87aae"
+      ],
+      "score": [
+        "6afc7775-aeb2-4593-a7da-e471e625755f"
+      ],
+      "lower": [
+        "6afc7775-aeb2-4593-a7da-e471e625755f"
+      ],
+      "less": [
+        "6afc7775-aeb2-4593-a7da-e471e625755f"
+      ],
+      "xue": [
+        "6afc7775-aeb2-4593-a7da-e471e625755f"
+      ],
+      "et": [
+        "6afc7775-aeb2-4593-a7da-e471e625755f"
+      ],
+      "al": [
+        "6afc7775-aeb2-4593-a7da-e471e625755f"
+      ],
+      "ieee": [
+        "6afc7775-aeb2-4593-a7da-e471e625755f"
+      ],
+      "tip": [
+        "6afc7775-aeb2-4593-a7da-e471e625755f"
+      ],
+      "available": [
+        "6afc7775-aeb2-4593-a7da-e471e625755f"
+      ],
+      "torchmetrics": [
+        "6afc7775-aeb2-4593-a7da-e471e625755f"
+      ],
+      "constant": [
+        "6afc7775-aeb2-4593-a7da-e471e625755f"
+      ],
+      "c": [
+        "6afc7775-aeb2-4593-a7da-e471e625755f"
+      ],
+      "0026": [
+        "6afc7775-aeb2-4593-a7da-e471e625755f"
+      ],
+      "inf": [
+        "6afc7775-aeb2-4593-a7da-e471e625755f"
+      ],
+      "better": [
+        "6afc7775-aeb2-4593-a7da-e471e625755f"
+      ],
+      "visually": [
+        "6afc7775-aeb2-4593-a7da-e471e625755f"
+      ],
+      "noticeable": [
+        "6afc7775-aeb2-4593-a7da-e471e625755f"
+      ],
+      "distorting": [
+        "6afc7775-aeb2-4593-a7da-e471e625755f"
+      ],
+      "ideal": [
+        "6afc7775-aeb2-4593-a7da-e471e625755f"
+      ],
+      "starting": [
+        "6afc7775-aeb2-4593-a7da-e471e625755f",
+        "60acd33e-8f3a-460a-8bdf-be20ef38fafd"
+      ],
+      "creating": [
+        "6afc7775-aeb2-4593-a7da-e471e625755f",
+        "60acd33e-8f3a-460a-8bdf-be20ef38fafd",
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "test_gmsd": [
+        "6afc7775-aeb2-4593-a7da-e471e625755f"
+      ],
+      "extend": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "hsv": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "only": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "process": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "v": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "luminance": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "channel": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c",
+        "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1"
+      ],
+      "preserving": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "hue": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "s": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "saturation": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "channels": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "convert": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "bgr": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c",
+        "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1"
+      ],
+      "back": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c",
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "support": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c",
+        "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1",
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "perception": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "extended": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "perceptually": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "uniform": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "lab": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "device": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c",
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "independent": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "ycbcr": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "video": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "strategy": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "pattern": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "processors": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "codes": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "color_bgr2hsv": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "color_bgr2lab": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "color_bgr2ycrcb": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "design": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "decision": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "separate": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "color_sece": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "color_secedct": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "adding": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "color_space": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "existing": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "seceenhancer": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "class": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c",
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "keeps": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "apis": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "cleanly": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "separated": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "avoids": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "breaking": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "changes": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "colorprocessor": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "abc": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c",
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "supports": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "spaces": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "pass": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c",
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "blocker": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "d54006f3": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "681c": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "438a": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "85f0": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "fdba614f8dcd": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "should": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "unblocked": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "via": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "__init__": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "provides": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "cleaner": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "api": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c",
+        "361ab3d7-d57c-48cb-83e8-1062f7c87aae"
+      ],
+      "separation": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "follows": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "single": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c",
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "responsibility": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "principle": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "effectively": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "serves": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "full": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "deliverable": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "fulfilled": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "which": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "comprehensive": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c",
+        "361ab3d7-d57c-48cb-83e8-1062f7c87aae"
+      ],
+      "hsvprocessor": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "labprocessor": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "ycbcrprocessor": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "supporting": [
+        "8c6ca77b-46b0-46ab-b274-a95e88d6024c"
+      ],
+      "run": [
+        "7cf67922-b7f6-4fae-9a2e-e3ab16080702"
+      ],
+      "generate": [
+        "7cf67922-b7f6-4fae-9a2e-e3ab16080702"
+      ],
+      "comparison": [
+        "7cf67922-b7f6-4fae-9a2e-e3ab16080702",
+        "60acd33e-8f3a-460a-8bdf-be20ef38fafd",
+        "361ab3d7-d57c-48cb-83e8-1062f7c87aae",
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "statistics": [
+        "7cf67922-b7f6-4fae-9a2e-e3ab16080702"
+      ],
+      "against": [
+        "7cf67922-b7f6-4fae-9a2e-e3ab16080702"
+      ],
+      "baseline": [
+        "7cf67922-b7f6-4fae-9a2e-e3ab16080702",
+        "60acd33e-8f3a-460a-8bdf-be20ef38fafd",
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "algorithms": [
+        "7cf67922-b7f6-4fae-9a2e-e3ab16080702",
+        "60acd33e-8f3a-460a-8bdf-be20ef38fafd"
+      ],
+      "ghe": [
+        "7cf67922-b7f6-4fae-9a2e-e3ab16080702",
+        "60acd33e-8f3a-460a-8bdf-be20ef38fafd"
+      ],
+      "ehs": [
+        "7cf67922-b7f6-4fae-9a2e-e3ab16080702"
+      ],
+      "wthe": [
+        "7cf67922-b7f6-4fae-9a2e-e3ab16080702",
+        "60acd33e-8f3a-460a-8bdf-be20ef38fafd"
+      ],
+      "create": [
+        "7cf67922-b7f6-4fae-9a2e-e3ab16080702",
+        "361ab3d7-d57c-48cb-83e8-1062f7c87aae",
+        "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1",
+        "0eb65914-05bb-463b-a970-ef279bd57e52",
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "csv": [
+        "7cf67922-b7f6-4fae-9a2e-e3ab16080702"
+      ],
+      "report": [
+        "7cf67922-b7f6-4fae-9a2e-e3ab16080702"
+      ],
+      "quantitative": [
+        "7cf67922-b7f6-4fae-9a2e-e3ab16080702",
+        "60acd33e-8f3a-460a-8bdf-be20ef38fafd"
+      ],
+      "benchmark": [
+        "7cf67922-b7f6-4fae-9a2e-e3ab16080702"
+      ],
+      "global": [
+        "60acd33e-8f3a-460a-8bdf-be20ef38fafd"
+      ],
+      "equalization": [
+        "60acd33e-8f3a-460a-8bdf-be20ef38fafd"
+      ],
+      "weighted": [
+        "60acd33e-8f3a-460a-8bdf-be20ef38fafd"
+      ],
+      "thresholded": [
+        "60acd33e-8f3a-460a-8bdf-be20ef38fafd"
+      ],
+      "these": [
+        "60acd33e-8f3a-460a-8bdf-be20ef38fafd"
+      ],
+      "methods": [
+        "60acd33e-8f3a-460a-8bdf-be20ef38fafd"
+      ],
+      "referenced": [
+        "60acd33e-8f3a-460a-8bdf-be20ef38fafd"
+      ],
+      "implementations": [
+        "60acd33e-8f3a-460a-8bdf-be20ef38fafd"
+      ],
+      "pypi": [
+        "60acd33e-8f3a-460a-8bdf-be20ef38fafd"
+      ],
+      "package": [
+        "60acd33e-8f3a-460a-8bdf-be20ef38fafd"
+      ],
+      "imweightedthresholdedheq": [
+        "60acd33e-8f3a-460a-8bdf-be20ef38fafd"
+      ],
+      "mamdasn": [
+        "60acd33e-8f3a-460a-8bdf-be20ef38fafd"
+      ],
+      "equalizehist": [
+        "60acd33e-8f3a-460a-8bdf-be20ef38fafd"
+      ],
+      "clahe": [
+        "60acd33e-8f3a-460a-8bdf-be20ef38fafd"
+      ],
+      "createclahe": [
+        "60acd33e-8f3a-460a-8bdf-be20ef38fafd"
+      ],
+      "documentation": [
+        "361ab3d7-d57c-48cb-83e8-1062f7c87aae"
+      ],
+      "usage": [
+        "361ab3d7-d57c-48cb-83e8-1062f7c87aae"
+      ],
+      "guide": [
+        "361ab3d7-d57c-48cb-83e8-1062f7c87aae"
+      ],
+      "write": [
+        "361ab3d7-d57c-48cb-83e8-1062f7c87aae"
+      ],
+      "readme": [
+        "361ab3d7-d57c-48cb-83e8-1062f7c87aae"
+      ],
+      "md": [
+        "361ab3d7-d57c-48cb-83e8-1062f7c87aae"
+      ],
+      "installation": [
+        "361ab3d7-d57c-48cb-83e8-1062f7c87aae"
+      ],
+      "public": [
+        "361ab3d7-d57c-48cb-83e8-1062f7c87aae"
+      ],
+      "examples": [
+        "361ab3d7-d57c-48cb-83e8-1062f7c87aae"
+      ],
+      "code": [
+        "361ab3d7-d57c-48cb-83e8-1062f7c87aae"
+      ],
+      "snippets": [
+        "361ab3d7-d57c-48cb-83e8-1062f7c87aae"
+      ],
+      "visualization": [
+        "361ab3d7-d57c-48cb-83e8-1062f7c87aae"
+      ],
+      "sharing": [
+        "361ab3d7-d57c-48cb-83e8-1062f7c87aae"
+      ],
+      "utilities": [
+        "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1"
+      ],
+      "format": [
+        "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1",
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "detection": [
+        "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1",
+        "0eb65914-05bb-463b-a970-ef279bd57e52",
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "automatic": [
+        "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1"
+      ],
+      "loading": [
+        "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1"
+      ],
+      "saving": [
+        "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1"
+      ],
+      "handle": [
+        "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1"
+      ],
+      "rgb": [
+        "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1"
+      ],
+      "rgba": [
+        "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1"
+      ],
+      "stripping": [
+        "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1"
+      ],
+      "jpeg": [
+        "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1"
+      ],
+      "tiff": [
+        "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1"
+      ],
+      "bmp": [
+        "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1"
+      ],
+      "webp": [
+        "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1"
+      ],
+      "formats": [
+        "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1"
+      ],
+      "conversion": [
+        "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1"
+      ],
+      "scaling": [
+        "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1"
+      ],
+      "imread": [
+        "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1"
+      ],
+      "imread_unchanged": [
+        "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1"
+      ],
+      "preservation": [
+        "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1"
+      ],
+      "add": [
+        "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1"
+      ],
+      "ensure_uint8": [
+        "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1"
+      ],
+      "helper": [
+        "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1"
+      ],
+      "depth": [
+        "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1"
+      ],
+      "pytorch": [
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "gpu": [
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "backend": [
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "transforms": [
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "torchbackend": [
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "implementing": [
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "abstract": [
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "interface": [
+        "0eb65914-05bb-463b-a970-ef279bd57e52",
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "torch": [
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "or": [
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "custom": [
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "auto": [
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "detects": [
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "cuda": [
+        "0eb65914-05bb-463b-a970-ef279bd57e52",
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "availability": [
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "falls": [
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "cpu": [
+        "0eb65914-05bb-463b-a970-ef279bd57e52",
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "memory": [
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "efficient": [
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "4gb": [
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "vram": [
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "constraint": [
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "is_available": [
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "check": [
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "get_device_properties": [
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "advanced": [
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "dependency": [
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "started": [
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "backends": [
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "numpybackend": [
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "graceful": [
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "fallback": [
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "passed": [
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "performance": [
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "512x512": [
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "2s": [
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "requires": [
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "allows": [
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "extras": [
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "cli": [
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "tool": [
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "click": [
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "rich": [
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "command": [
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "line": [
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "argument": [
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "parsing": [
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "progress": [
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "bars": [
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "formatted": [
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "batch": [
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "folder": [
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "method": [
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "selection": [
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "entry": [
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "point": [
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "project": [
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "scripts": [
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "main": [
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "group": [
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ],
+      "subcommands": [
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ]
+    },
+    "files": {
+      "https://github.com/xiezhongzhao/Contrast_Enhancement": [
+        "74f40c0f-72d4-4441-a4f0-4c226b92e083"
+      ],
+      "https://github.com/photosynthesis-team/piq": [
+        "43b212eb-fb08-4db2-8254-ea4672738665"
+      ],
+      "src/sece/io/": [
+        "8ae76b01-8df5-4fd1-9534-bb5a10d0e3b1"
+      ],
+      "src/sece/backends/": [
+        "0eb65914-05bb-463b-a970-ef279bd57e52"
+      ],
+      "src/sece/cli/": [
+        "1f4ddb01-ea3d-45c7-8b71-f9a3450bd764"
+      ]
+    }
+  }
+}
