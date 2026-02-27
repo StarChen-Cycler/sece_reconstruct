@@ -20,14 +20,17 @@ ImageArray: TypeAlias = np.ndarray
 def emeg(
     image: ImageArray,
     block_size: int = 8,
-    epsilon: float = 1e-10,
+    epsilon: float = 1.0,
+    beta: float = 255.0,
 ) -> float:
     """
     Compute Expected Measure of Enhancement by Gradient (EMEG).
 
-    Formula (14) from the paper. Measures contrast enhancement level.
+    Implements formula (14) from Celik (2014):
+    EMEG(X) = (1/k₁k₂) Σ (1/β) max(dx_h/(dx_l + ε), dy_h/(dy_l + ε))
+
     Divides image into blocks, computes gradient ratio (max/min) for each
-    block, applies log, and returns the average.
+    block, and returns the average normalized by beta.
 
     Parameters
     ----------
@@ -37,33 +40,36 @@ def emeg(
     block_size : int, optional
         Size of blocks for local contrast measurement, by default 8
     epsilon : float, optional
-        Small constant to prevent log(0) and division by zero, by default 1e-10
+        Small constant to prevent division by zero, by default 1.0
+        Paper uses a constant ε but doesn't specify exact value.
+    beta : float, optional
+        Weighting coefficient for normalization (β in paper), by default 255.0
 
     Returns
     -------
     float
         EMEG value. Higher values indicate higher contrast.
-        Range is typically [0, 1] after normalization.
+        Range is [0, 1] (theoretical maximum is 1.0).
 
     Notes
     -----
     EMEG is sensitive to noise. A high EMEG may indicate noise rather
     than good contrast. For valid enhancement, EMEG(Y) > EMEG(X) is expected.
 
-    The formula computes for each block k:
-        EMEG_k = alpha * log(max(dx_h/dx_l, dy_h/dy_l))
+    The formula computes for each block:
+        EMEG_block = (1/β) * max(dx_h/(dx_l + ε), dy_h/(dy_l + ε))
 
     where dx_h, dx_l are max/min horizontal gradients in the block,
-    and dy_h, dy_l are max/min vertical gradients.
+    and dy_h, dy_l are max/min vertical gradients in the block.
 
-    The final EMEG is normalized to [0, 1] range by dividing by a theoretical
-    maximum (log(beta) where beta is the maximum possible gradient ratio).
+    Note: This is the CORRECT formula (14) from the paper - a LINEAR formula
+    without log transformation. Earlier implementations incorrectly used log.
 
     Examples
     --------
     >>> import numpy as np
     >>> from sece.metrics import emeg
-    >>> # Black image has low EMEG
+    >>> # Black image has low EMEG (homogeneous)
     >>> black = np.zeros((64, 64), dtype=np.uint8)
     >>> emeg(black) < 0.1
     True
@@ -93,24 +99,16 @@ def emeg(
     k1 = H // block_size  # Number of blocks vertically
     k2 = W // block_size  # Number of blocks horizontally
 
-    # Maximum gradient value for 8-bit images
-    max_gradient = 255.0
-    # Theoretical max ratio (max_gradient / epsilon) for normalization
-    # Use log for normalization
-    max_log_ratio = np.log(max_gradient / epsilon)
-
     if k1 == 0 or k2 == 0:
         # Image too small for block size, use whole image
         dx_h, dx_l = np.max(dx), np.min(dx)
         dy_h, dy_l = np.max(dy), np.min(dy)
 
-        # Add epsilon to avoid log(0) when dx_l or dy_l is 0
-        ratio_dx = (dx_h + epsilon) / (dx_l + epsilon)
-        ratio_dy = (dy_h + epsilon) / (dy_l + epsilon)
+        # Formula (14): max(dx_h/(dx_l + ε), dy_h/(dy_l + ε)) / β
+        ratio_dx = dx_h / (dx_l + epsilon)
+        ratio_dy = dy_h / (dy_l + epsilon)
 
-        log_ratio = np.log(max(ratio_dx, ratio_dy))
-        # Normalize to [0, 1]
-        return max(0.0, min(1.0, log_ratio / max_log_ratio))
+        return max(ratio_dx, ratio_dy) / beta
 
     total = 0.0
     count = 0
@@ -131,21 +129,20 @@ def emeg(
             dx_h, dx_l = np.max(block_dx), np.min(block_dx)
             dy_h, dy_l = np.max(block_dy), np.min(block_dy)
 
-            # Compute gradient ratios with epsilon protection
-            ratio_dx = (dx_h + epsilon) / (dx_l + epsilon)
-            ratio_dy = (dy_h + epsilon) / (dy_l + epsilon)
+            # Formula (14): max(dx_h/(dx_l + ε), dy_h/(dy_l + ε)) / β
+            ratio_dx = dx_h / (dx_l + epsilon)
+            ratio_dy = dy_h / (dy_l + epsilon)
 
-            # Apply log and add to total
-            log_ratio = np.log(max(ratio_dx, ratio_dy))
-            total += log_ratio
+            # Add to total (will be divided by β and k1*k2)
+            total += max(ratio_dx, ratio_dy)
             count += 1
 
-    # Average and normalize to [0, 1]
-    avg_log_ratio = total / count if count > 0 else 0.0
-    normalized = avg_log_ratio / max_log_ratio
-
-    # Clamp to [0, 1]
-    return max(0.0, min(1.0, normalized))
+    # Average and normalize: (1/k1*k2) * sum * (1/β)
+    if count > 0:
+        avg_ratio = total / count
+        return avg_ratio / beta
+    else:
+        return 0.0
 
 
 def emeg_comparison(
