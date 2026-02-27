@@ -412,11 +412,14 @@ Higher frequencies get higher weights, enhancing local contrast.
 def emeg(
     image: ImageArray,
     block_size: int = 8,
-    epsilon: float = 1e-10,
+    epsilon: float = 1.0,
+    beta: float = 255.0,
 ) -> float
 ```
 
-Compute EMEG (Enhancement Measure by Entropy of Gradient).
+Compute EMEG (Expected Measure of Enhancement by Gradient) using formula (14) from Celik (2014):
+
+EMEG(X) = (1/k₁k₂) Σ (1/β) max(dx_h/(dx_l + ε), dy_h/(dy_l + ε))
 
 Higher values indicate better contrast enhancement.
 
@@ -426,9 +429,10 @@ Higher values indicate better contrast enhancement.
 |------|------|---------|-------------|
 | `image` | `ImageArray` | required | Input image (grayscale or color) |
 | `block_size` | `int` | `8` | Block size for local computation |
-| `epsilon` | `float` | `1e-10` | Numerical stability constant |
+| `epsilon` | `float` | `1.0` | Small constant to prevent division by zero |
+| `beta` | `float` | `255.0` | Normalization coefficient (β in paper) |
 
-**Returns:** `float` - EMEG value (typically 0 to 1).
+**Returns:** `float` - EMEG value (range [0, 1], higher = better contrast).
 
 ---
 

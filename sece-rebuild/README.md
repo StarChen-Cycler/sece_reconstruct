@@ -180,7 +180,7 @@ sece enhance input.png output.png --verbose
 ```python
 from sece.metrics import emeg, ssim, gmsd
 
-# EMEG: Enhancement measure (higher = better contrast)
+# EMEG: Expected Measure of Enhancement by Gradient (higher = better contrast)
 score = emeg(enhanced_image)
 
 # SSIM: Structural similarity (1.0 = identical)
